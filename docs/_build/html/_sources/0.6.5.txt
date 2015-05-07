@@ -8,8 +8,93 @@ New Operators in CJam 0.6.5
 ``mQ`` -- integer square root
 -----------------------------
 
-This is just the square root version of integer division.::
+Take an integer or double and finds the square root, truncated to int. ::
 
     99 mQ    ->  9
     100 mQ   ->  10
     3.14 mQ  ->  1
+    
+``mR`` -- random choice
+-----------------------
+
+Given an array, this chooses a (pseudo-)random element, for example: ::
+
+    [1 2 3 4] mR  ->  2   
+
+``e#`` -- line comment
+----------------------
+
+Simply comments out the rest of the line. ::
+
+    T1{_2$+}A*]S* e# Fibonacci
+    
+
+``e%`` -- string formatting a la printf
+---------------------------------------
+
+Takes a format string and an element/array and performs string formatting using printf. ::
+
+    "(%d, %d)" [1 2] e%  ->  (1, 2)
+    "%.08f" 3.14 e%      ->  3.14000000
+    
+``e*`` -- repeat each item
+--------------------------
+
+Given an array ``A`` and a number ``n``, returns a new array which consists of every element of ``A`` repeated ``n`` times. ::
+
+    [1 2 3] 5 e*           ->  [1 1 1 1 1 2 2 2 2 2 3 3 3 3 3]
+    ["abc" "def"] 3.14 e*  ->  ["abc" "abc" "abc" "def" "def" "def"]
+    
+    
+``e\`` -- swap array items
+--------------------------
+
+Given an array and two indices, this swaps two elements of the array at the specified indices. ::
+
+    [0 1 2 3 4] 1 4 e\  ->  [0 4 2 3 1]
+    
+    
+``e=`` -- count occurrences
+---------------------------
+
+Given an array and an element, counts the number of times the element appears in the array. ::
+
+    [0 0 1 0 2 2] 0 e=                  ->  3
+    [[0 1] [1 0] [1 1] [0 1]] [0 1] e=  ->  2
+    
+``e!`` -- permutations
+----------------------
+
+Returns an array consisting of all unique permutations of a given array, in lexicographical order. ::
+
+    [3 1 2] e!    ->  [[1 2 3] [1 3 2] [2 1 3] [2 3 1] [3 1 2] [3 2 1]]
+    [3 1 1 1] e!  ->  [[1 1 1 3] [1 1 3 1] [1 3 1 1] [3 1 1 1]]
+    "CBA" e!      ->  ["ABC" "ACB" "BAC" "BCA" "CAB" "CBA"]
+   
+``m!`` -- factorial
+-------------------
+
+Finds the factorial of a given number. Note that the number is truncated, so this is not equivalent to the gamma function. ::
+
+    5 m!     ->  120
+    3.14 m!  ->  6
+    
+``e_`` -- flatten
+-----------------
+
+Flattens an array completely, no matter how nested it is. ::
+
+    [[1 2 3] [[4] [[5] [6]]]] e_  ->  [1 2 3 4 5 6]
+    
+``e``` and ``e~`` -- run length encode/decode
+-----------------------------------------------
+
+``e``` encodes a sequence using run-length encoding, which keeps counts the number of times the same element appears in a row. ::
+
+    "AAAABCCCDDE" e`                    ->  [[4 'A] [1 'B] [3 'C] [2 'D] [1 'E]]
+    [[1 0] [1 0] [1 1] [1 1] [1 1]] e`  ->  [[2 [1 0]] [3 [1 1]]]
+    
+``e~`` does the opposite, and decodes a run-length encoding. ::
+
+    [[4 'A] [1 'B] [3 'C] [2 'D] [1 'E]] e~  ->  "AAAABCCCDDE"
+    [[2 [1 0]] [3 [1 1]]] e~                 ->  [[1 0] [1 0] [1 1] [1 1] [1 1]]
