@@ -132,6 +132,18 @@
 <h1>New Operators in CJam 0.6.5<a class="headerlink" href="#new-operators-in-cjam-0-6-5" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="w-while-loops">
 <h2><code class="docutils literal"><span class="pre">w</span></code> &#8211; while loops<a class="headerlink" href="#w-while-loops" title="Permalink to this headline">¶</a></h2>
+<p>Takes two blocks &#8211; a condition followed by a loop body &#8211; and performs a while loop. The condition is tested for before each loop iteration, and is consumed like <code class="docutils literal"><span class="pre">g</span></code>.</p>
+<p>For example,</p>
+<div class="highlight-python"><div class="highlight"><pre>1 {_5&lt;} {_&#39;X*N+o)} w ;
+</pre></div>
+</div>
+<p>prints a triangle of <code class="docutils literal"><span class="pre">X</span></code> s by incrementing a number until it is no longer less than 5.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">X</span>
+<span class="n">XX</span>
+<span class="n">XXX</span>
+<span class="n">XXXX</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="mq-integer-square-root">
 <h2><code class="docutils literal"><span class="pre">mQ</span></code> &#8211; integer square root<a class="headerlink" href="#mq-integer-square-root" title="Permalink to this headline">¶</a></h2>

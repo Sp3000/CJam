@@ -4,6 +4,18 @@ New Operators in CJam 0.6.5
 ``w`` -- while loops
 --------------------
 
+Takes two blocks -- a condition followed by a loop body -- and performs a while loop. The condition is tested for before each loop iteration, and is consumed like ``g``.
+
+For example, ::
+
+    1 {_5<} {_'X*N+o)} w ;
+    
+prints a triangle of ``X`` s by incrementing a number until it is no longer less than 5. ::
+
+    X
+    XX
+    XXX
+    XXXX
 
 ``mQ`` -- integer square root
 -----------------------------
