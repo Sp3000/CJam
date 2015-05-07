@@ -17,7 +17,7 @@ Take an integer or double and finds the square root, truncated to int. ::
 ``mR`` -- random choice
 -----------------------
 
-Given an array, this chooses a (pseudo-)random element, for example: ::
+Given an array, chooses a (pseudo-)random element, for example: ::
 
     [1 2 3 4] mR  ->  2   
 
@@ -49,7 +49,7 @@ Given an array ``A`` and a number ``n``, returns a new array which consists of e
 ``e\`` -- swap array items
 --------------------------
 
-Given an array and two indices, this swaps two elements of the array at the specified indices. ::
+Given an array and two indices, swaps two elements of the array at the specified indices. ::
 
     [0 1 2 3 4] 1 4 e\  ->  [0 4 2 3 1]
     
