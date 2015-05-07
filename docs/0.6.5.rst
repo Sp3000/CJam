@@ -127,12 +127,12 @@ Flattens an array completely, no matter how nested it is. ::
 
 ``e``` encodes a sequence using run-length encoding, which keeps counts of the number of times the same element appears in a row. ::
 
-    "AAAABCCCDDE" e`                    ->  [[4 'A] [1 'B] [3 'C] [2 'D] [1 'E]]
+    "AAAABCCCAAC" e`                    ->  [[4 'A] [1 'B] [3 'C] [2 'A] [1 'C]]
     [[1 0] [1 0] [1 1] [1 1] [1 1]] e`  ->  [[2 [1 0]] [3 [1 1]]]
     
 ``e~`` does the opposite, and decodes a run-length encoding. ::
 
-    [[4 'A] [1 'B] [3 'C] [2 'D] [1 'E]] e~  ->  "AAAABCCCDDE"
+    [[4 'A] [1 'B] [3 'C] [2 'A] [1 'C]] e~  ->  "AAAABCCCAAC"
     [[2 [1 0]] [3 [1 1]]] e~                 ->  [[1 0] [1 0] [1 1] [1 1] [1 1]]
     
 
