@@ -250,12 +250,12 @@
 <div class="section" id="e-and-e-run-length-encode-decode">
 <h2><code class="docutils literal"><span class="pre">e`</span></code> and <code class="docutils literal"><span class="pre">e~</span></code> &#8211; run length encode/decode<a class="headerlink" href="#e-and-e-run-length-encode-decode" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal"><span class="pre">e`</span></code> encodes a sequence using run-length encoding, which keeps counts of the number of times the same element appears in a row.</p>
-<div class="highlight-python"><div class="highlight"><pre>&quot;AAAABCCCDDE&quot; e`                    -&gt;  [[4 &#39;A] [1 &#39;B] [3 &#39;C] [2 &#39;D] [1 &#39;E]]
+<div class="highlight-python"><div class="highlight"><pre>&quot;AAAABCCCAAC&quot; e`                    -&gt;  [[4 &#39;A] [1 &#39;B] [3 &#39;C] [2 &#39;A] [1 &#39;C]]
 [[1 0] [1 0] [1 1] [1 1] [1 1]] e`  -&gt;  [[2 [1 0]] [3 [1 1]]]
 </pre></div>
 </div>
 <p><code class="docutils literal"><span class="pre">e~</span></code> does the opposite, and decodes a run-length encoding.</p>
-<div class="highlight-python"><div class="highlight"><pre>[[4 &#39;A] [1 &#39;B] [3 &#39;C] [2 &#39;D] [1 &#39;E]] e~  -&gt;  &quot;AAAABCCCDDE&quot;
+<div class="highlight-python"><div class="highlight"><pre>[[4 &#39;A] [1 &#39;B] [3 &#39;C] [2 &#39;A] [1 &#39;C]] e~  -&gt;  &quot;AAAABCCCAAC&quot;
 [[2 [1 0]] [3 [1 1]]] e~                 -&gt;  [[1 0] [1 0] [1 1] [1 1] [1 1]]
 </pre></div>
 </div>
