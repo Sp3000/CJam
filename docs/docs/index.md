@@ -1,1 +1,1 @@
-# CJam Operator Manual
+# CJam Docs and Tutorial
