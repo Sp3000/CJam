@@ -1,5 +1,15 @@
-What's New in CJam 0.6.5
-========================
+New Operators in CJam 0.6.5
+===========================
+
+``w`` -- while loops
+--------------------
 
 
+``mQ`` -- integer square root
+-----------------------------
 
+This is just the square root version of integer division.::
+
+    99 mQ    ->  9
+    100 mQ   ->  10
+    3.14 mQ  ->  1
