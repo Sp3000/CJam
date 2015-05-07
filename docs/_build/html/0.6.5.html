@@ -72,6 +72,7 @@
               <!-- Local TOC -->
               <div class="local-toc"><ul>
 <li><a class="reference internal" href="#">New Operators in CJam 0.6.5</a><ul>
+<li><a class="reference internal" href="#vector-operators">Vector operators</a></li>
 <li><a class="reference internal" href="#w-while-loops"><code class="docutils literal"><span class="pre">w</span></code> &#8211; while loops</a></li>
 <li><a class="reference internal" href="#mq-integer-square-root"><code class="docutils literal"><span class="pre">mQ</span></code> &#8211; integer square root</a></li>
 <li><a class="reference internal" href="#mr-random-choice"><code class="docutils literal"><span class="pre">mR</span></code> &#8211; random choice</a></li>
@@ -86,7 +87,7 @@
 <li><a class="reference internal" href="#e-and-e-run-length-encode-decode"><code class="docutils literal"><span class="pre">e`</span></code> and <code class="docutils literal"><span class="pre">e~</span></code> &#8211; run length encode/decode</a></li>
 <li><a class="reference internal" href="#ew-overlapping-slices"><code class="docutils literal"><span class="pre">ew</span></code> &#8211; overlapping slices</a></li>
 <li><a class="reference internal" href="#e-and-e-left-right-array-padding"><code class="docutils literal"><span class="pre">e[</span></code> and <code class="docutils literal"><span class="pre">e]</span></code> &#8211; left/right array padding</a></li>
-<li><a class="reference internal" href="#m-cartesian-product"><code class="docutils literal"><span class="pre">m*</span></code>  &#8211; Cartesian product</a></li>
+<li><a class="reference internal" href="#m-with-array-and-number-cartesian-power"><code class="docutils literal"><span class="pre">m*</span></code> with array and number  &#8211; Cartesian power</a></li>
 <li><a class="reference internal" href="#ee-enumerate"><code class="docutils literal"><span class="pre">ee</span></code> &#8211; enumerate</a></li>
 <li><a class="reference internal" href="#and-for-blocks-if-with-only-then-or-only-else"><code class="docutils literal"><span class="pre">&amp;</span></code> and <code class="docutils literal"><span class="pre">|</span></code> for blocks &#8211; &#8220;if&#8221; with only &#8220;then&#8221; or only &#8220;else&#8221;</a></li>
 </ul>
@@ -130,6 +131,21 @@
             
   <div class="section" id="new-operators-in-cjam-0-6-5">
 <h1>New Operators in CJam 0.6.5<a class="headerlink" href="#new-operators-in-cjam-0-6-5" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="vector-operators">
+<h2>Vector operators<a class="headerlink" href="#vector-operators" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">.</span></code> can be applied before a binary operation to vectorise it so that it performs operations element-wise.</p>
+<div class="highlight-python"><div class="highlight"><pre>[1 2 3] [7 6 2] .+   -&gt;  [8 8 5]
+[1 2 3] [7 6 2] .*   -&gt;  [7 12 6]
+[1 2 3] [7 6 2] .#   -&gt;  [1 64 9]
+[1 2 3] [7 6 2] .e&lt;  -&gt;  [1 2 2]
+[1 2 3] [7 6 2] .\   -&gt;  [7 1 6 2 2 3]
+</pre></div>
+</div>
+<p>Since <code class="docutils literal"><span class="pre">.</span></code> is just a modifier, it can be chained.</p>
+<div class="highlight-python"><div class="highlight"><pre>[[1 2 3] [7 6 2]] [[8 9 1] [2 0 3]] ..+  -&gt;  [[9 11 4] [9 6 5]]
+</pre></div>
+</div>
+</div>
 <div class="section" id="w-while-loops">
 <h2><code class="docutils literal"><span class="pre">w</span></code> &#8211; while loops<a class="headerlink" href="#w-while-loops" title="Permalink to this headline">¶</a></h2>
 <p>Takes two blocks &#8211; a condition followed by a loop body &#8211; and performs a while loop. The condition is tested for before each loop iteration, and is consumed like <code class="docutils literal"><span class="pre">g</span></code>.</p>
@@ -206,7 +222,7 @@
 &quot;BAA&quot; e!    -&gt;  [&quot;AAB&quot; &quot;ABA&quot; &quot;BAA&quot;]
 </pre></div>
 </div>
-<p>If given a number, and implicit call to <cite>,</cite> is first performed.</p>
+<p>If given a number, an implicit call to <code class="docutils literal"><span class="pre">,</span></code> (range) is performed first.</p>
 <div class="highlight-python"><div class="highlight"><pre>3 e!  -&gt;  [[0 1 2] [0 2 1] [1 0 2] [1 2 0] [2 0 1] [2 1 0]]
 </pre></div>
 </div>
@@ -233,7 +249,7 @@
 </div>
 <div class="section" id="e-and-e-run-length-encode-decode">
 <h2><code class="docutils literal"><span class="pre">e`</span></code> and <code class="docutils literal"><span class="pre">e~</span></code> &#8211; run length encode/decode<a class="headerlink" href="#e-and-e-run-length-encode-decode" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">e`</span></code> encodes a sequence using run-length encoding, which keeps counts the number of times the same element appears in a row.</p>
+<p><code class="docutils literal"><span class="pre">e`</span></code> encodes a sequence using run-length encoding, which keeps counts of the number of times the same element appears in a row.</p>
 <div class="highlight-python"><div class="highlight"><pre>&quot;AAAABCCCDDE&quot; e`                    -&gt;  [[4 &#39;A] [1 &#39;B] [3 &#39;C] [2 &#39;D] [1 &#39;E]]
 [[1 0] [1 0] [1 1] [1 1] [1 1]] e`  -&gt;  [[2 [1 0]] [3 [1 1]]]
 </pre></div>
@@ -262,13 +278,9 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="m-cartesian-product">
-<h2><code class="docutils literal"><span class="pre">m*</span></code>  &#8211; Cartesian product<a class="headerlink" href="#m-cartesian-product" title="Permalink to this headline">¶</a></h2>
-<p>If given two array, computes the Cartesian product, i.e. the array consisting of all possible pairs of elements between the two arrays.</p>
-<div class="highlight-python"><div class="highlight"><pre>[1 2 3] [4 5 6] m*  -&gt;  [[1 4] [1 5] [1 6] [2 4] [2 5] [2 6] [3 4] [3 5] [3 6]]
-</pre></div>
-</div>
-<p>If given an array and a number, this returns Cartesian product of the array repeated the given number of times. Alternatively, this is all array of the given length consisting of elements from the specified array. Element can be repeated.</p>
+<div class="section" id="m-with-array-and-number-cartesian-power">
+<h2><code class="docutils literal"><span class="pre">m*</span></code> with array and number  &#8211; Cartesian power<a class="headerlink" href="#m-with-array-and-number-cartesian-power" title="Permalink to this headline">¶</a></h2>
+<p>Given an array and a number, returns the Cartesian product of the array repeated the given number of times. Alternatively, this is all arrays of the given length consisting of elements from the specified array. Elements can be repeated.</p>
 <div class="highlight-python"><div class="highlight"><pre>[0 1] 3 m*  -&gt;  [[0 0 0] [0 0 1] [0 1 0] [0 1 1] [1 0 0] [1 0 1] [1 1 0] [1 1 1]]
 &quot;AAB&quot; 2 m*  -&gt;  [&quot;AA&quot; &quot;AA&quot; &quot;AB&quot; &quot;AA&quot; &quot;AA&quot; &quot;AB&quot; &quot;BA&quot; &quot;BA&quot; &quot;BB&quot;]
 </pre></div>
@@ -283,12 +295,12 @@
 </div>
 <div class="section" id="and-for-blocks-if-with-only-then-or-only-else">
 <h2><code class="docutils literal"><span class="pre">&amp;</span></code> and <code class="docutils literal"><span class="pre">|</span></code> for blocks &#8211; &#8220;if&#8221; with only &#8220;then&#8221; or only &#8220;else&#8221;<a class="headerlink" href="#and-for-blocks-if-with-only-then-or-only-else" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">&amp;</span></code> checks if an element is truthy, and if so executes the block.</p>
+<p><code class="docutils literal"><span class="pre">&amp;</span></code> checks if a condition is truthy, and if so executes the block.</p>
 <div class="highlight-python"><div class="highlight"><pre>100 0 {3+} &amp;  -&gt;  100
 100 1 {3+} &amp;  -&gt;  103
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">|</span></code> checks if an element is falsy, and if so executes the block.</p>
+<p><code class="docutils literal"><span class="pre">|</span></code> checks if a condition is falsy, and if so executes the block.</p>
 <div class="highlight-python"><div class="highlight"><pre>100 0 {3+} |  -&gt;  103
 100 1 {3+} |  -&gt;  100
 </pre></div>
