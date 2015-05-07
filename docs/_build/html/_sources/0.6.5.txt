@@ -102,8 +102,8 @@ If given a number, an implicit call to ``,`` (range) is performed first. ::
     3 e!  ->  [[0 1 2] [0 2 1] [1 0 2] [1 2 0] [2 0 1] [2 1 0]]
 
    
-``m!`` -- factorial
--------------------
+``m!`` -- factorial and permutations with duplicates
+----------------------------------------------------
 
 Given an array, returns an array consisting of **all possible** permutations. Unlike ``e!``, this is formed by applying each permutation in lexicographical order to the array, and hence the result may not necessarily be sorted. ::
 
