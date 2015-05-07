@@ -1,6 +1,21 @@
 New Operators in CJam 0.6.5
 ===========================
 
+Vector operators
+----------------
+
+``.`` can be applied before a binary operation to vectorise it so that it performs operations element-wise. ::
+
+    [1 2 3] [7 6 2] .+   ->  [8 8 5]
+    [1 2 3] [7 6 2] .*   ->  [7 12 6]
+    [1 2 3] [7 6 2] .#   ->  [1 64 9]
+    [1 2 3] [7 6 2] .e<  ->  [1 2 2]
+    [1 2 3] [7 6 2] .\   ->  [7 1 6 2 2 3]
+    
+Since ``.`` is just a modifier, it can be chained. ::
+
+    [[1 2 3] [7 6 2]] [[8 9 1] [2 0 3]] ..+  ->  [[9 11 4] [9 6 5]]
+
 ``w`` -- while loops
 --------------------
 
@@ -82,7 +97,7 @@ Given an array, returns an array consisting of **all unique** permutations, in l
     [3 1 2] e!  ->  [[1 2 3] [1 3 2] [2 1 3] [2 3 1] [3 1 2] [3 2 1]]
     "BAA" e!    ->  ["AAB" "ABA" "BAA"]
     
-If given a number, and implicit call to `,` is first performed. ::
+If given a number, an implicit call to ``,`` (range) is performed first. ::
 
     3 e!  ->  [[0 1 2] [0 2 1] [1 0 2] [1 2 0] [2 0 1] [2 1 0]]
 
@@ -110,7 +125,7 @@ Flattens an array completely, no matter how nested it is. ::
 ``e``` and ``e~`` -- run length encode/decode
 -----------------------------------------------
 
-``e``` encodes a sequence using run-length encoding, which keeps counts the number of times the same element appears in a row. ::
+``e``` encodes a sequence using run-length encoding, which keeps counts of the number of times the same element appears in a row. ::
 
     "AAAABCCCDDE" e`                    ->  [[4 'A] [1 'B] [3 'C] [2 'D] [1 'E]]
     [[1 0] [1 0] [1 1] [1 1] [1 1]] e`  ->  [[2 [1 0]] [3 [1 1]]]
@@ -141,14 +156,10 @@ Pads an array to a given length with a specified element. ::
     [1 2 3 4] 7 0 e]  ->  [1 2 3 4 0 0 0]
     
     
-``m*``  -- Cartesian product
-----------------------------
-
-If given two array, computes the Cartesian product, i.e. the array consisting of all possible pairs of elements between the two arrays. ::
-    
-    [1 2 3] [4 5 6] m*  ->  [[1 4] [1 5] [1 6] [2 4] [2 5] [2 6] [3 4] [3 5] [3 6]]
-    
-If given an array and a number, this returns Cartesian product of the array repeated the given number of times. Alternatively, this is all array of the given length consisting of elements from the specified array. Element can be repeated. ::
+``m*`` with array and number  -- Cartesian power
+------------------------------------------------
+   
+Given an array and a number, returns the Cartesian product of the array repeated the given number of times. Alternatively, this is all arrays of the given length consisting of elements from the specified array. Elements can be repeated. ::
 
     [0 1] 3 m*  ->  [[0 0 0] [0 0 1] [0 1 0] [0 1 1] [1 0 0] [1 0 1] [1 1 0] [1 1 1]]
     "AAB" 2 m*  ->  ["AA" "AA" "AB" "AA" "AA" "AB" "BA" "BA" "BB"]
@@ -163,12 +174,12 @@ Given an array, returns an array of ``[index element]`` pairs. ::
 ``&`` and ``|`` for blocks -- "if" with only "then" or only "else"
 ------------------------------------------------------------------
 
-``&`` checks if an element is truthy, and if so executes the block. ::
+``&`` checks if a condition is truthy, and if so executes the block. ::
 
     100 0 {3+} &  ->  100
     100 1 {3+} &  ->  103
     
-``|`` checks if an element is falsy, and if so executes the block. ::
+``|`` checks if a condition is falsy, and if so executes the block. ::
 
     100 0 {3+} |  ->  103
     100 1 {3+} |  ->  100
