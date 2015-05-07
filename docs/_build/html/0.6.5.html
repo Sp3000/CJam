@@ -84,6 +84,10 @@
 <li><a class="reference internal" href="#m-factorial"><code class="docutils literal"><span class="pre">m!</span></code> &#8211; factorial</a></li>
 <li><a class="reference internal" href="#e-flatten"><code class="docutils literal"><span class="pre">e_</span></code> &#8211; flatten</a></li>
 <li><a class="reference internal" href="#e-and-e-run-length-encode-decode"><code class="docutils literal"><span class="pre">e`</span></code> and <code class="docutils literal"><span class="pre">e~</span></code> &#8211; run length encode/decode</a></li>
+<li><a class="reference internal" href="#ew-overlapping-slices"><code class="docutils literal"><span class="pre">ew</span></code> &#8211; overlapping slices</a></li>
+<li><a class="reference internal" href="#e-and-e-left-right-array-padding"><code class="docutils literal"><span class="pre">e[</span></code> and <code class="docutils literal"><span class="pre">e]</span></code> &#8211; left/right array padding</a></li>
+<li><a class="reference internal" href="#m-cartesian-product"><code class="docutils literal"><span class="pre">m*</span></code>  &#8211; Cartesian product</a></li>
+<li><a class="reference internal" href="#ee-enumerate"><code class="docutils literal"><span class="pre">ee</span></code> &#8211; enumerate</a></li>
 </ul>
 </li>
 </ul>
@@ -162,8 +166,8 @@
 <div class="section" id="e-repeat-each-item">
 <h2><code class="docutils literal"><span class="pre">e*</span></code> &#8211; repeat each item<a class="headerlink" href="#e-repeat-each-item" title="Permalink to this headline">¶</a></h2>
 <p>Given an array <code class="docutils literal"><span class="pre">A</span></code> and a number <code class="docutils literal"><span class="pre">n</span></code>, returns a new array which consists of every element of <code class="docutils literal"><span class="pre">A</span></code> repeated <code class="docutils literal"><span class="pre">n</span></code> times.</p>
-<div class="highlight-python"><div class="highlight"><pre>[1 2 3] 5 e*           -&gt;  [1 1 1 1 1 2 2 2 2 2 3 3 3 3 3]
-[&quot;abc&quot; &quot;def&quot;] 3.14 e*  -&gt;  [&quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;def&quot; &quot;def&quot; &quot;def&quot;]
+<div class="highlight-python"><div class="highlight"><pre>[1 2 3] 5 e*        -&gt;  [1 1 1 1 1 2 2 2 2 2 3 3 3 3 3]
+[&quot;abc&quot; &quot;def&quot;] 3 e*  -&gt;  [&quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;def&quot; &quot;def&quot; &quot;def&quot;]
 </pre></div>
 </div>
 </div>
@@ -216,6 +220,43 @@
 <p><code class="docutils literal"><span class="pre">e~</span></code> does the opposite, and decodes a run-length encoding.</p>
 <div class="highlight-python"><div class="highlight"><pre>[[4 &#39;A] [1 &#39;B] [3 &#39;C] [2 &#39;D] [1 &#39;E]] e~  -&gt;  &quot;AAAABCCCDDE&quot;
 [[2 [1 0]] [3 [1 1]]] e~                 -&gt;  [[1 0] [1 0] [1 1] [1 1] [1 1]]
+</pre></div>
+</div>
+</div>
+<div class="section" id="ew-overlapping-slices">
+<h2><code class="docutils literal"><span class="pre">ew</span></code> &#8211; overlapping slices<a class="headerlink" href="#ew-overlapping-slices" title="Permalink to this headline">¶</a></h2>
+<p>Given an array and a slice length, returns all overlapping slices of the array with the given length.</p>
+<div class="highlight-python"><div class="highlight"><pre>[1 2 3 4 5 6] 3 ew  -&gt;  [[1 2 3] [2 3 4] [3 4 5] [4 5 6]]
+</pre></div>
+</div>
+</div>
+<div class="section" id="e-and-e-left-right-array-padding">
+<h2><code class="docutils literal"><span class="pre">e[</span></code> and <code class="docutils literal"><span class="pre">e]</span></code> &#8211; left/right array padding<a class="headerlink" href="#e-and-e-left-right-array-padding" title="Permalink to this headline">¶</a></h2>
+<p>Pads an array to a given length with a specified element.</p>
+<div class="highlight-python"><div class="highlight"><pre>&quot;abc&quot; 10 &#39;0 e[    -&gt;  &quot;0000000abc&quot;
+[1 2 3 4] 7 0 e[  -&gt;  [0 0 0 1 2 3 4]
+
+&quot;abc&quot; 10 &#39;0 e]    -&gt;  &quot;abc0000000&quot;
+[1 2 3 4] 7 0 e]  -&gt;  [1 2 3 4 0 0 0]
+</pre></div>
+</div>
+</div>
+<div class="section" id="m-cartesian-product">
+<h2><code class="docutils literal"><span class="pre">m*</span></code>  &#8211; Cartesian product<a class="headerlink" href="#m-cartesian-product" title="Permalink to this headline">¶</a></h2>
+<p>If given two array, computes the Cartesian product, i.e. the array consisting of all possible pairs of elements between the two arrays.</p>
+<div class="highlight-python"><div class="highlight"><pre>[1 2 3] [4 5 6] m*  -&gt;  [[1 4] [1 5] [1 6] [2 4] [2 5] [2 6] [3 4] [3 5] [3 6]]
+</pre></div>
+</div>
+<p>If given an array and a number, this returns Cartesian product of the array repeated the given number of times. Alternatively, this is all array of the given length consisting of elements from the specified array. Element can be repeated.</p>
+<div class="highlight-python"><div class="highlight"><pre>[0 1] 3 m*  -&gt;  [[0 0 0] [0 0 1] [0 1 0] [0 1 1] [1 0 0] [1 0 1] [1 1 0] [1 1 1]]
+&quot;AAB&quot; 2 m*  -&gt;  [&quot;AA&quot; &quot;AA&quot; &quot;AB&quot; &quot;AA&quot; &quot;AA&quot; &quot;AB&quot; &quot;BA&quot; &quot;BA&quot; &quot;BB&quot;]
+</pre></div>
+</div>
+</div>
+<div class="section" id="ee-enumerate">
+<h2><code class="docutils literal"><span class="pre">ee</span></code> &#8211; enumerate<a class="headerlink" href="#ee-enumerate" title="Permalink to this headline">¶</a></h2>
+<p>Given an array, returns an array of <code class="docutils literal"><span class="pre">[index</span> <span class="pre">element]</span></code> pairs.</p>
+<div class="highlight-python"><div class="highlight"><pre>&quot;ABCDEFG&quot; ee  -&gt;  [[0 &#39;A] [1 &#39;B] [2 &#39;C] [3 &#39;D] [4 &#39;E] [5 &#39;F] [6 &#39;G]]
 </pre></div>
 </div>
 </div>

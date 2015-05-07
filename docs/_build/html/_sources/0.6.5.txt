@@ -42,8 +42,8 @@ Takes a format string and an element/array and performs string formatting using 
 
 Given an array ``A`` and a number ``n``, returns a new array which consists of every element of ``A`` repeated ``n`` times. ::
 
-    [1 2 3] 5 e*           ->  [1 1 1 1 1 2 2 2 2 2 3 3 3 3 3]
-    ["abc" "def"] 3.14 e*  ->  ["abc" "abc" "abc" "def" "def" "def"]
+    [1 2 3] 5 e*        ->  [1 1 1 1 1 2 2 2 2 2 3 3 3 3 3]
+    ["abc" "def"] 3 e*  ->  ["abc" "abc" "abc" "def" "def" "def"]
     
     
 ``e\`` -- swap array items
@@ -98,3 +98,43 @@ Flattens an array completely, no matter how nested it is. ::
 
     [[4 'A] [1 'B] [3 'C] [2 'D] [1 'E]] e~  ->  "AAAABCCCDDE"
     [[2 [1 0]] [3 [1 1]]] e~                 ->  [[1 0] [1 0] [1 1] [1 1] [1 1]]
+    
+
+``ew`` -- overlapping slices
+----------------------------
+
+Given an array and a slice length, returns all overlapping slices of the array with the given length. ::
+
+    [1 2 3 4 5 6] 3 ew  ->  [[1 2 3] [2 3 4] [3 4 5] [4 5 6]]
+    
+
+``e[`` and ``e]`` -- left/right array padding
+---------------------------------------------
+
+Pads an array to a given length with a specified element. ::
+
+    "abc" 10 '0 e[    ->  "0000000abc"
+    [1 2 3 4] 7 0 e[  ->  [0 0 0 1 2 3 4]
+    
+    "abc" 10 '0 e]    ->  "abc0000000"
+    [1 2 3 4] 7 0 e]  ->  [1 2 3 4 0 0 0]
+    
+    
+``m*``  -- Cartesian product
+----------------------------
+
+If given two array, computes the Cartesian product, i.e. the array consisting of all possible pairs of elements between the two arrays. ::
+    
+    [1 2 3] [4 5 6] m*  ->  [[1 4] [1 5] [1 6] [2 4] [2 5] [2 6] [3 4] [3 5] [3 6]]
+    
+If given an array and a number, this returns Cartesian product of the array repeated the given number of times. Alternatively, this is all array of the given length consisting of elements from the specified array. Element can be repeated. ::
+
+    [0 1] 3 m*  ->  [[0 0 0] [0 0 1] [0 1 0] [0 1 1] [1 0 0] [1 0 1] [1 1 0] [1 1 1]]
+    "AAB" 2 m*  ->  ["AA" "AA" "AB" "AA" "AA" "AB" "BA" "BA" "BB"]
+    
+``ee`` -- enumerate
+-------------------
+
+Given an array, returns an array of ``[index element]`` pairs. ::
+
+    "ABCDEFG" ee  ->  [[0 'A] [1 'B] [2 'C] [3 'D] [4 'E] [5 'F] [6 'G]]
