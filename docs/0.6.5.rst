@@ -138,3 +138,6 @@ If given an array and a number, this returns Cartesian product of the array repe
 Given an array, returns an array of ``[index element]`` pairs. ::
 
     "ABCDEFG" ee  ->  [[0 'A] [1 'B] [2 'C] [3 'D] [4 'E] [5 'F] [6 'G]]
+    
+``&`` and ``|`` for blocks
+--------------------------
