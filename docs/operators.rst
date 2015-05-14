@@ -12,8 +12,8 @@ Operator summary
       border-left-width: 1px !important;
     }
     .rst-content table.docutils thead th {
-      border-left-width: 1px !important;
-      border-left-color: solid rgb(225, 228, 229) !important;
+      border-left-width: 2px !important;
+      border-left-color: rgb(225, 228, 229) !important;
     }
     </style>
     
@@ -24,9 +24,9 @@ Notes
   * If an operator takes arguments of different types then usually the arguments may be given in a different order to the one listed.
   * Most block operations which require an array will implicitly call ``,`` (range) when given a number. Exceptions include ``:``, ``.`` and ``f``.
 
-+----------+-----------------+-------------------------------------------+-----------------------+--------------+
-| Op.      | Arguments       | Description                               | Example code          | Result       |
-+==========+=================+===========================================+=======================+==============+
++----------+-----------------+-------------------------------------------+--------------------------------------+
+| Op.      | Arguments       | Description                               | Example                              |
++==========+=================+===========================================+======================================+
 | !        | ``Any !``       | Boolean "not"                             | ``5 !  ->  0``                       |
 +----------+-----------------+-------------------------------------------+--------------------------------------+
 | #        | ``x:Num y:Num   | Power/exponentiation, ``x^y``             | ``2 .5 #  ->  1.4142135623730951``   |
