@@ -7,10 +7,20 @@ Operator summary
     table .docutils.literal {
       background: transparent !important;
       border: none !important;
-    }     
+    }
+    </style>
+    
+.. raw:: html
+
+    <style>
     .wy-table td:first-child, .rst-content table.docutils td:first-child, .rst-content table.field-list td:first-child, .wy-table th:first-child, .rst-content table.docutils th:first-child, .rst-content table.field-list th:first-child {
       border-left-width: 1px !important;
-    }     
+    }
+    </style>
+    
+.. raw:: html
+
+    <style>
     .rst-content table.docutils thead th {
       border-left-width: 2px !important;
       border-left-color: solid rgb(225, 228, 229) !important;
