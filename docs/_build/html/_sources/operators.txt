@@ -1,18 +1,25 @@
 Operator summary
 ================
 
+.. raw:: html
+
+    <style>table .docutils.literal {background: transparent !important;  border: none !important;  }; .wy-table td:first-child, .rst-content table.docutils td:first-child, .rst-content table.field-list td:first-child, .wy-table th:first-child, .rst-content table.docutils th:first-child, .rst-content table.field-list th:first-child { border-left-width: 1px !important; }; .rst-content table.docutils thead th { border-left-width: 2px !important;
+      border-left-color: solid rgb(225, 228, 229) !important;  }  </style>
+    
+    
 Notes
 -----
 
-  * In some cases, arguments may also be given in a different order to the one listed.
-  * Block operations which require an array will implicitly call ``,`` (range) when given a number.
+  * If an operator takes arguments of different types then usually the arguments may be given in a different order to the one listed.
+  * Most block operations which require an array will implicitly call ``,`` (range) when given a number. Exceptions include ``:``, ``.`` and ``f``.
 
 +----------+-----------------+-------------------------------------------+--------------------------------------+
 | Op.      | Arguments       | Description                               | Example                              |
 +==========+=================+===========================================+======================================+
 | !        | ``Any !``       | Boolean "not"                             | ``5 !  ->  0``                       |
 +----------+-----------------+-------------------------------------------+--------------------------------------+
-| #        | ``Num Num #``   | Power/exponentiation                      | ``2 .5 #  ->  1.4142135623730951``   |
+| #        | ``x:Num y:Num   | Power/exponentiation, ``x^y``             | ``2 .5 #  ->  1.4142135623730951``   |
+|          | #``             |                                           |                                      |
 |          +-----------------+-------------------------------------------+--------------------------------------+
 |          | ``Array Any #`` | Find index, or -1 if not present          | ``"banana" "na" #  ->  2``           |
 +----------+-----------------+-------------------------------------------+--------------------------------------+
@@ -20,7 +27,8 @@ Notes
 |          +-----------------+-------------------------------------------+--------------------------------------+
 |          | ``Array $``     | Sort                                      | ``[3 0 2 1] $  ->  [0 1 2 3]``       |
 +----------+-----------------+-------------------------------------------+--------------------------------------+
-| %        | ``Num Num %``   | Modulo                                    | ``27 5 %  ->  2``                    |
+| %        | ``x:Num y:Num   | Modulo, ``x mod y``                       | ``27 5 %  ->  2``                    |
+|          | %``             |                                           |                                      |
 |          +-----------------+-------------------------------------------+--------------------------------------+
 |          | ``Array Num %`` | Every nth                                 | ``[0 1 2 3 4] 2 %  ->  [0 2 4]``     |
 |          +-----------------+-------------------------------------------+--------------------------------------+

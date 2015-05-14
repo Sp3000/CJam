@@ -114,12 +114,13 @@
             
   <div class="section" id="operator-summary">
 <h1>Operator summary<a class="headerlink" href="#operator-summary" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="notes">
+<style>table .docutils.literal {background: transparent !important;  border: none !important;  }; .wy-table td:first-child, .rst-content table.docutils td:first-child, .rst-content table.field-list td:first-child, .wy-table th:first-child, .rst-content table.docutils th:first-child, .rst-content table.field-list th:first-child { border-left-width: 1px !important; }; .rst-content table.docutils thead th { border-left-width: 2px !important;
+  border-left-color: solid rgb(225, 228, 229) !important;  }  </style><div class="section" id="notes">
 <h2>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
-<li>In some cases, arguments may also be given in a different order to the one listed.</li>
-<li>Block operations which require an array will implicitly call <code class="docutils literal"><span class="pre">,</span></code> (range) when given a number.</li>
+<li>If an operator takes arguments of different types then usually the arguments may be given in a different order to the one listed.</li>
+<li>Most block operations which require an array will implicitly call <code class="docutils literal"><span class="pre">,</span></code> (range) when given a number. Exceptions include <code class="docutils literal"><span class="pre">:</span></code>, <code class="docutils literal"><span class="pre">.</span></code> and <code class="docutils literal"><span class="pre">f</span></code>.</li>
 </ul>
 </div></blockquote>
 <table border="1" class="docutils">
@@ -143,8 +144,9 @@
 <td><code class="docutils literal"><span class="pre">5</span> <span class="pre">!</span>&nbsp; <span class="pre">-&gt;</span>&nbsp; <span class="pre">0</span></code></td>
 </tr>
 <tr class="row-odd"><td rowspan="2">#</td>
-<td><code class="docutils literal"><span class="pre">Num</span> <span class="pre">Num</span> <span class="pre">#</span></code></td>
-<td>Power/exponentiation</td>
+<td><code class="docutils literal"><span class="pre">x:Num</span> <span class="pre">y:Num</span>
+<span class="pre">#</span></code></td>
+<td>Power/exponentiation, <code class="docutils literal"><span class="pre">x^y</span></code></td>
 <td><code class="docutils literal"><span class="pre">2</span> <span class="pre">.5</span> <span class="pre">#</span>&nbsp; <span class="pre">-&gt;</span>&nbsp; <span class="pre">1.4142135623730951</span></code></td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">Array</span> <span class="pre">Any</span> <span class="pre">#</span></code></td>
@@ -161,8 +163,9 @@
 <td><code class="docutils literal"><span class="pre">[3</span> <span class="pre">0</span> <span class="pre">2</span> <span class="pre">1]</span> <span class="pre">$</span>&nbsp; <span class="pre">-&gt;</span>&nbsp; <span class="pre">[0</span> <span class="pre">1</span> <span class="pre">2</span> <span class="pre">3]</span></code></td>
 </tr>
 <tr class="row-odd"><td rowspan="4">%</td>
-<td><code class="docutils literal"><span class="pre">Num</span> <span class="pre">Num</span> <span class="pre">%</span></code></td>
-<td>Modulo</td>
+<td><code class="docutils literal"><span class="pre">x:Num</span> <span class="pre">y:Num</span>
+<span class="pre">%</span></code></td>
+<td>Modulo, <code class="docutils literal"><span class="pre">x</span> <span class="pre">mod</span> <span class="pre">y</span></code></td>
 <td><code class="docutils literal"><span class="pre">27</span> <span class="pre">5</span> <span class="pre">%</span>&nbsp; <span class="pre">-&gt;</span>&nbsp; <span class="pre">2</span></code></td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">Array</span> <span class="pre">Num</span> <span class="pre">%</span></code></td>
