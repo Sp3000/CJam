@@ -133,148 +133,79 @@
 <tr class="row-odd"><th class="head">Op.</th>
 <th class="head">Arguments</th>
 <th class="head">Description</th>
-<th class="head">Examples</th>
+<th class="head">Example</th>
 </tr>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>!</td>
 <td><code class="docutils literal"><span class="pre">Any</span> <span class="pre">!</span></code></td>
 <td>Boolean &#8220;not&#8221;</td>
-<td><div class="first last highlight-python"><div class="highlight"><pre>5 !      -&gt;  0
-0 !      -&gt;  1
-&quot;abc&quot; !  -&gt;  0
-</pre></div>
-</div>
-</td>
+<td><code class="docutils literal"><span class="pre">5</span> <span class="pre">!</span>&nbsp; <span class="pre">-&gt;</span>&nbsp; <span class="pre">0</span></code></td>
 </tr>
 <tr class="row-odd"><td rowspan="2">#</td>
 <td><code class="docutils literal"><span class="pre">Num</span> <span class="pre">Num</span> <span class="pre">#</span></code></td>
 <td>Power/exponentiation</td>
-<td><div class="first last highlight-python"><div class="highlight"><pre>3 6 #   -&gt;  729
-2 .5 #  -&gt;  1.4142135623730951
-0 0 #   -&gt;  1
-</pre></div>
-</div>
-</td>
+<td><code class="docutils literal"><span class="pre">2</span> <span class="pre">.5</span> <span class="pre">#</span>&nbsp; <span class="pre">-&gt;</span>&nbsp; <span class="pre">1.4142135623730951</span></code></td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">Array</span> <span class="pre">Any</span> <span class="pre">#</span></code></td>
 <td>Find index, or -1 if not present</td>
-<td><div class="first last highlight-python"><div class="highlight"><pre>&quot;abcde&quot; &#39;b #   -&gt;  1
-[1 2 3 4] 5 #  -&gt;  -1
-</pre></div>
-</div>
-</td>
+<td><code class="docutils literal"><span class="pre">&quot;banana&quot;</span> <span class="pre">&quot;na&quot;</span> <span class="pre">#</span>&nbsp; <span class="pre">-&gt;</span>&nbsp; <span class="pre">2</span></code></td>
 </tr>
 <tr class="row-odd"><td rowspan="2">$</td>
 <td><code class="docutils literal"><span class="pre">Int</span> <span class="pre">$</span></code></td>
 <td>Copy from stack</td>
-<td><div class="first last highlight-python"><div class="highlight"><pre>Suppose stack is [&quot;abc&quot; -4 3]:
-
-  0 $   -&gt;  3
-  1 $   -&gt;  -4
-  2 $   -&gt;  &quot;abc&quot;
-  -1 $  -&gt;  &quot;abc&quot;
-</pre></div>
-</div>
-</td>
+<td><code class="docutils literal"><span class="pre">-4</span> <span class="pre">&quot;ab&quot;</span> <span class="pre">3</span> <span class="pre">1$</span>&nbsp; <span class="pre">-&gt;</span>&nbsp; <span class="pre">-4</span> <span class="pre">&quot;ab&quot;</span> <span class="pre">3</span> <span class="pre">&quot;ab&quot;</span></code></td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">Array</span> <span class="pre">$</span></code></td>
 <td>Sort</td>
-<td><div class="first last highlight-python"><div class="highlight"><pre>[3 0 2 1] $  -&gt;  [0 1 2 3]
-</pre></div>
-</div>
-</td>
+<td><code class="docutils literal"><span class="pre">[3</span> <span class="pre">0</span> <span class="pre">2</span> <span class="pre">1]</span> <span class="pre">$</span>&nbsp; <span class="pre">-&gt;</span>&nbsp; <span class="pre">[0</span> <span class="pre">1</span> <span class="pre">2</span> <span class="pre">3]</span></code></td>
 </tr>
 <tr class="row-odd"><td rowspan="4">%</td>
 <td><code class="docutils literal"><span class="pre">Num</span> <span class="pre">Num</span> <span class="pre">%</span></code></td>
 <td>Modulo</td>
-<td><div class="first last highlight-python"><div class="highlight"><pre>27 5 %  -&gt;  2
-</pre></div>
-</div>
-</td>
+<td><code class="docutils literal"><span class="pre">27</span> <span class="pre">5</span> <span class="pre">%</span>&nbsp; <span class="pre">-&gt;</span>&nbsp; <span class="pre">2</span></code></td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">Array</span> <span class="pre">Num</span> <span class="pre">%</span></code></td>
 <td>Every nth</td>
-<td><div class="first last highlight-python"><div class="highlight"><pre>[0 1 2 3 4] 2 %  -&gt;  [0 2 4]
-[0 1 2 3 4] 3 %  -&gt;  [0 3]
-</pre></div>
-</div>
-</td>
+<td><code class="docutils literal"><span class="pre">[0</span> <span class="pre">1</span> <span class="pre">2</span> <span class="pre">3</span> <span class="pre">4]</span> <span class="pre">2</span> <span class="pre">%</span>&nbsp; <span class="pre">-&gt;</span>&nbsp; <span class="pre">[0</span> <span class="pre">2</span> <span class="pre">4]</span></code></td>
 </tr>
-<tr class="row-odd"><td><p class="first"><code class="docutils literal"><span class="pre">String</span> <span class="pre">Char</span>
-<span class="pre">%</span></code></p>
-<p class="last"><code class="docutils literal"><span class="pre">Array</span> <span class="pre">Array</span>
-<span class="pre">%</span></code></p>
-</td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">Array</span>
+<span class="pre">Array/Char</span> <span class="pre">%</span></code></td>
 <td>Split by</td>
-<td><div class="first last highlight-python"><div class="highlight"><pre>&quot;1,2,3&quot; &#39;, %    -&gt;  [&quot;1&quot; &quot;2&quot; &quot;3&quot;]
-&quot;abcde&quot; &quot;bc&quot; %  -&gt;  [&quot;a&quot; &quot;de&quot;]
-[1 2 3] [2] %   -&gt;  [[1] [3]]
-</pre></div>
-</div>
-</td>
+<td><code class="docutils literal"><span class="pre">&quot;1,2,3&quot;</span> <span class="pre">',</span> <span class="pre">%</span>&nbsp;&nbsp;&nbsp; <span class="pre">-&gt;</span>&nbsp; <span class="pre">[&quot;1&quot;</span> <span class="pre">&quot;2&quot;</span> <span class="pre">&quot;3&quot;]</span></code></td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">Array</span> <span class="pre">Block</span>
 <span class="pre">%</span></code></td>
 <td>Map</td>
-<td><div class="first last highlight-python"><div class="highlight"><pre>[1 2 3] {2*3+} %  -&gt;  [5 7 9]
-</pre></div>
-</div>
-</td>
+<td><code class="docutils literal"><span class="pre">[1</span> <span class="pre">2</span> <span class="pre">3]</span> <span class="pre">{2*3+}</span> <span class="pre">%</span>&nbsp; <span class="pre">-&gt;</span>&nbsp; <span class="pre">[5</span> <span class="pre">7</span> <span class="pre">9]</span></code></td>
 </tr>
 <tr class="row-odd"><td rowspan="2">&amp;</td>
-<td><p class="first"><code class="docutils literal"><span class="pre">Int</span> <span class="pre">Int</span> <span class="pre">&amp;</span></code></p>
-<p class="last"><code class="docutils literal"><span class="pre">Int</span> <span class="pre">Char</span> <span class="pre">&amp;</span></code></p>
-</td>
+<td><code class="docutils literal"><span class="pre">Int/Char</span>
+<span class="pre">Int</span> <span class="pre">&amp;</span></code></td>
 <td>Bitwise &#8220;and&#8221;</td>
-<td><div class="first last highlight-python"><div class="highlight"><pre>5 6 &amp;  -&gt;  4
-</pre></div>
-</div>
-</td>
+<td><code class="docutils literal"><span class="pre">5</span> <span class="pre">6</span> <span class="pre">&amp;</span>&nbsp; <span class="pre">-&gt;</span>&nbsp; <span class="pre">4</span></code></td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">Array</span> <span class="pre">Any</span> <span class="pre">&amp;</span></code></td>
 <td>Setwise intersection</td>
-<td><div class="first last highlight-python"><div class="highlight"><pre>[6 1 8 1] [6 1 1 2] &amp;  -&gt;  [6 1]
-&quot;abcde&quot; &#39;f &amp;           -&gt;  &quot;&quot;
-</pre></div>
-</div>
-</td>
+<td><code class="docutils literal"><span class="pre">[6</span> <span class="pre">1</span> <span class="pre">8</span> <span class="pre">1]</span> <span class="pre">[6</span> <span class="pre">1</span> <span class="pre">1</span> <span class="pre">2]</span> <span class="pre">&amp;</span>&nbsp; <span class="pre">-&gt;</span>&nbsp; <span class="pre">[6</span> <span class="pre">1]</span></code></td>
 </tr>
 <tr class="row-odd"><td rowspan="2">(</td>
-<td><p class="first"><code class="docutils literal"><span class="pre">Num</span> <span class="pre">(</span></code></p>
-<p class="last"><code class="docutils literal"><span class="pre">Char</span> <span class="pre">(</span></code></p>
-</td>
+<td><code class="docutils literal"><span class="pre">Num/Char</span> <span class="pre">(</span></code></td>
 <td>Decrement</td>
-<td><div class="first last highlight-python"><div class="highlight"><pre>42 (   -&gt;  41
-&#39;b (   -&gt;  &#39;a
-</pre></div>
-</div>
-</td>
+<td><code class="docutils literal"><span class="pre">42</span> <span class="pre">(</span>&nbsp; <span class="pre">-&gt;</span>&nbsp; <span class="pre">41</span></code></td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">Array</span> <span class="pre">(</span></code></td>
 <td>Uncons from left</td>
-<td><div class="first last highlight-python"><div class="highlight"><pre>[2 7 1 8] (  -&gt;  [7 1 8] 2
-</pre></div>
-</div>
-</td>
+<td><code class="docutils literal"><span class="pre">[2</span> <span class="pre">7</span> <span class="pre">1</span> <span class="pre">8]</span> <span class="pre">(</span>&nbsp; <span class="pre">-&gt;</span>&nbsp; <span class="pre">[7</span> <span class="pre">1</span> <span class="pre">8]</span> <span class="pre">2</span></code></td>
 </tr>
 <tr class="row-odd"><td rowspan="2">)</td>
-<td><p class="first"><code class="docutils literal"><span class="pre">Num</span> <span class="pre">)</span></code></p>
-<p class="last"><code class="docutils literal"><span class="pre">Char</span> <span class="pre">)</span></code></p>
-</td>
+<td><code class="docutils literal"><span class="pre">Num/Char</span> <span class="pre">)</span></code></td>
 <td>Increment</td>
-<td><div class="first last highlight-python"><div class="highlight"><pre>42 )   -&gt;  43
-&#39;b )   -&gt;  &#39;c
-</pre></div>
-</div>
-</td>
+<td><code class="docutils literal"><span class="pre">42</span> <span class="pre">)</span>&nbsp; <span class="pre">-&gt;</span>&nbsp; <span class="pre">43</span></code></td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">Array</span> <span class="pre">)</span></code></td>
 <td>Uncons from right</td>
-<td><div class="first last highlight-python"><div class="highlight"><pre>[2 7 1 8] )  -&gt;  [2 7 1] 8
-</pre></div>
-</div>
-</td>
+<td><code class="docutils literal"><span class="pre">[2</span> <span class="pre">7</span> <span class="pre">1</span> <span class="pre">8]</span> <span class="pre">)</span>&nbsp; <span class="pre">-&gt;</span>&nbsp; <span class="pre">[2</span> <span class="pre">7</span> <span class="pre">1]</span> <span class="pre">8</span></code></td>
 </tr>
 </tbody>
 </table>
