@@ -119,15 +119,6 @@ table .docutils.literal {
   background: transparent !important;
   border: none !important;
 }
-</style><style>
-.wy-table td:first-child, .rst-content table.docutils td:first-child, .rst-content table.field-list td:first-child, .wy-table th:first-child, .rst-content table.docutils th:first-child, .rst-content table.field-list th:first-child {
-  border-left-width: 1px !important;
-}
-</style><style>
-.rst-content table.docutils thead th {
-  border-left-width: 2px !important;
-  border-left-color: solid rgb(225, 228, 229) !important;
-}
 </style><div class="section" id="notes">
 <h2>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h2>
 <blockquote>
@@ -141,87 +132,89 @@ table .docutils.literal {
 <col width="9%" />
 <col width="16%" />
 <col width="40%" />
-<col width="35%" />
+<col width="21%" />
+<col width="13%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Op.</th>
 <th class="head">Arguments</th>
 <th class="head">Description</th>
-<th class="head">Example</th>
+<th class="head">Example code</th>
+<th class="head">Result</th>
 </tr>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>!</td>
 <td><code class="docutils literal"><span class="pre">Any</span> <span class="pre">!</span></code></td>
 <td>Boolean &#8220;not&#8221;</td>
-<td><code class="docutils literal"><span class="pre">5</span> <span class="pre">!</span>&nbsp; <span class="pre">-&gt;</span>&nbsp; <span class="pre">0</span></code></td>
+<td colspan="2"><code class="docutils literal"><span class="pre">5</span> <span class="pre">!</span>&nbsp; <span class="pre">-&gt;</span>&nbsp; <span class="pre">0</span></code></td>
 </tr>
 <tr class="row-odd"><td rowspan="2">#</td>
 <td><code class="docutils literal"><span class="pre">x:Num</span> <span class="pre">y:Num</span>
 <span class="pre">#</span></code></td>
 <td>Power/exponentiation, <code class="docutils literal"><span class="pre">x^y</span></code></td>
-<td><code class="docutils literal"><span class="pre">2</span> <span class="pre">.5</span> <span class="pre">#</span>&nbsp; <span class="pre">-&gt;</span>&nbsp; <span class="pre">1.4142135623730951</span></code></td>
+<td colspan="2"><code class="docutils literal"><span class="pre">2</span> <span class="pre">.5</span> <span class="pre">#</span>&nbsp; <span class="pre">-&gt;</span>&nbsp; <span class="pre">1.4142135623730951</span></code></td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">Array</span> <span class="pre">Any</span> <span class="pre">#</span></code></td>
 <td>Find index, or -1 if not present</td>
-<td><code class="docutils literal"><span class="pre">&quot;banana&quot;</span> <span class="pre">&quot;na&quot;</span> <span class="pre">#</span>&nbsp; <span class="pre">-&gt;</span>&nbsp; <span class="pre">2</span></code></td>
+<td colspan="2"><code class="docutils literal"><span class="pre">&quot;banana&quot;</span> <span class="pre">&quot;na&quot;</span> <span class="pre">#</span>&nbsp; <span class="pre">-&gt;</span>&nbsp; <span class="pre">2</span></code></td>
 </tr>
 <tr class="row-odd"><td rowspan="2">$</td>
 <td><code class="docutils literal"><span class="pre">Int</span> <span class="pre">$</span></code></td>
 <td>Copy from stack</td>
-<td><code class="docutils literal"><span class="pre">-4</span> <span class="pre">&quot;ab&quot;</span> <span class="pre">3</span> <span class="pre">1$</span>&nbsp; <span class="pre">-&gt;</span>&nbsp; <span class="pre">-4</span> <span class="pre">&quot;ab&quot;</span> <span class="pre">3</span> <span class="pre">&quot;ab&quot;</span></code></td>
+<td colspan="2"><code class="docutils literal"><span class="pre">-4</span> <span class="pre">&quot;ab&quot;</span> <span class="pre">3</span> <span class="pre">1$</span>&nbsp; <span class="pre">-&gt;</span>&nbsp; <span class="pre">-4</span> <span class="pre">&quot;ab&quot;</span> <span class="pre">3</span> <span class="pre">&quot;ab&quot;</span></code></td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">Array</span> <span class="pre">$</span></code></td>
 <td>Sort</td>
-<td><code class="docutils literal"><span class="pre">[3</span> <span class="pre">0</span> <span class="pre">2</span> <span class="pre">1]</span> <span class="pre">$</span>&nbsp; <span class="pre">-&gt;</span>&nbsp; <span class="pre">[0</span> <span class="pre">1</span> <span class="pre">2</span> <span class="pre">3]</span></code></td>
+<td colspan="2"><code class="docutils literal"><span class="pre">[3</span> <span class="pre">0</span> <span class="pre">2</span> <span class="pre">1]</span> <span class="pre">$</span>&nbsp; <span class="pre">-&gt;</span>&nbsp; <span class="pre">[0</span> <span class="pre">1</span> <span class="pre">2</span> <span class="pre">3]</span></code></td>
 </tr>
 <tr class="row-odd"><td rowspan="4">%</td>
 <td><code class="docutils literal"><span class="pre">x:Num</span> <span class="pre">y:Num</span>
 <span class="pre">%</span></code></td>
 <td>Modulo, <code class="docutils literal"><span class="pre">x</span> <span class="pre">mod</span> <span class="pre">y</span></code></td>
-<td><code class="docutils literal"><span class="pre">27</span> <span class="pre">5</span> <span class="pre">%</span>&nbsp; <span class="pre">-&gt;</span>&nbsp; <span class="pre">2</span></code></td>
+<td colspan="2"><code class="docutils literal"><span class="pre">27</span> <span class="pre">5</span> <span class="pre">%</span>&nbsp; <span class="pre">-&gt;</span>&nbsp; <span class="pre">2</span></code></td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">Array</span> <span class="pre">Num</span> <span class="pre">%</span></code></td>
 <td>Every nth</td>
-<td><code class="docutils literal"><span class="pre">[0</span> <span class="pre">1</span> <span class="pre">2</span> <span class="pre">3</span> <span class="pre">4]</span> <span class="pre">2</span> <span class="pre">%</span>&nbsp; <span class="pre">-&gt;</span>&nbsp; <span class="pre">[0</span> <span class="pre">2</span> <span class="pre">4]</span></code></td>
+<td colspan="2"><code class="docutils literal"><span class="pre">[0</span> <span class="pre">1</span> <span class="pre">2</span> <span class="pre">3</span> <span class="pre">4]</span> <span class="pre">2</span> <span class="pre">%</span>&nbsp; <span class="pre">-&gt;</span>&nbsp; <span class="pre">[0</span> <span class="pre">2</span> <span class="pre">4]</span></code></td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal"><span class="pre">Array</span>
 <span class="pre">Array/Char</span> <span class="pre">%</span></code></td>
 <td>Split by</td>
-<td><code class="docutils literal"><span class="pre">&quot;1,2,3&quot;</span> <span class="pre">',</span> <span class="pre">%</span>&nbsp; <span class="pre">-&gt;</span>&nbsp; <span class="pre">[&quot;1&quot;</span> <span class="pre">&quot;2&quot;</span> <span class="pre">&quot;3&quot;]</span></code></td>
+<td colspan="2"><code class="docutils literal"><span class="pre">&quot;1,2,3&quot;</span> <span class="pre">',</span> <span class="pre">%</span>&nbsp; <span class="pre">-&gt;</span>&nbsp; <span class="pre">[&quot;1&quot;</span> <span class="pre">&quot;2&quot;</span> <span class="pre">&quot;3&quot;]</span></code></td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">Array</span> <span class="pre">Block</span>
 <span class="pre">%</span></code></td>
 <td>Map</td>
-<td><code class="docutils literal"><span class="pre">[1</span> <span class="pre">2</span> <span class="pre">3]</span> <span class="pre">{2*3+}</span> <span class="pre">%</span>&nbsp; <span class="pre">-&gt;</span>&nbsp; <span class="pre">[5</span> <span class="pre">7</span> <span class="pre">9]</span></code></td>
+<td colspan="2"><code class="docutils literal"><span class="pre">[1</span> <span class="pre">2</span> <span class="pre">3]</span> <span class="pre">{2*3+}</span> <span class="pre">%</span>&nbsp; <span class="pre">-&gt;</span>&nbsp; <span class="pre">[5</span> <span class="pre">7</span> <span class="pre">9]</span></code></td>
 </tr>
 <tr class="row-odd"><td rowspan="2">&amp;</td>
 <td><code class="docutils literal"><span class="pre">Int/Char</span>
 <span class="pre">Int</span> <span class="pre">&amp;</span></code></td>
 <td>Bitwise &#8220;and&#8221;</td>
-<td><code class="docutils literal"><span class="pre">5</span> <span class="pre">6</span> <span class="pre">&amp;</span>&nbsp; <span class="pre">-&gt;</span>&nbsp; <span class="pre">4</span></code></td>
+<td colspan="2"><code class="docutils literal"><span class="pre">5</span> <span class="pre">6</span> <span class="pre">&amp;</span>&nbsp; <span class="pre">-&gt;</span>&nbsp; <span class="pre">4</span></code></td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">Array</span> <span class="pre">Any</span> <span class="pre">&amp;</span></code></td>
 <td>Setwise intersection</td>
-<td><code class="docutils literal"><span class="pre">[6</span> <span class="pre">1</span> <span class="pre">8</span> <span class="pre">1]</span> <span class="pre">[6</span> <span class="pre">1</span> <span class="pre">1</span> <span class="pre">2]</span> <span class="pre">&amp;</span>&nbsp; <span class="pre">-&gt;</span>&nbsp; <span class="pre">[6</span> <span class="pre">1]</span></code></td>
+<td colspan="2"><code class="docutils literal"><span class="pre">[6</span> <span class="pre">1</span> <span class="pre">8</span> <span class="pre">1]</span> <span class="pre">[6</span> <span class="pre">1</span> <span class="pre">1</span> <span class="pre">2]</span> <span class="pre">&amp;</span>&nbsp; <span class="pre">-&gt;</span>&nbsp; <span class="pre">[6</span> <span class="pre">1]</span></code></td>
 </tr>
 <tr class="row-odd"><td rowspan="2">(</td>
 <td><code class="docutils literal"><span class="pre">Num/Char</span> <span class="pre">(</span></code></td>
 <td>Decrement</td>
-<td><code class="docutils literal"><span class="pre">42</span> <span class="pre">(</span>&nbsp; <span class="pre">-&gt;</span>&nbsp; <span class="pre">41</span></code></td>
+<td colspan="2"><code class="docutils literal"><span class="pre">42</span> <span class="pre">(</span>&nbsp; <span class="pre">-&gt;</span>&nbsp; <span class="pre">41</span></code></td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">Array</span> <span class="pre">(</span></code></td>
 <td>Uncons from left</td>
-<td><code class="docutils literal"><span class="pre">[2</span> <span class="pre">7</span> <span class="pre">1</span> <span class="pre">8]</span> <span class="pre">(</span>&nbsp; <span class="pre">-&gt;</span>&nbsp; <span class="pre">[7</span> <span class="pre">1</span> <span class="pre">8]</span> <span class="pre">2</span></code></td>
+<td colspan="2"><code class="docutils literal"><span class="pre">[2</span> <span class="pre">7</span> <span class="pre">1</span> <span class="pre">8]</span> <span class="pre">(</span>&nbsp; <span class="pre">-&gt;</span>&nbsp; <span class="pre">[7</span> <span class="pre">1</span> <span class="pre">8]</span> <span class="pre">2</span></code></td>
 </tr>
 <tr class="row-odd"><td rowspan="2">)</td>
 <td><code class="docutils literal"><span class="pre">Num/Char</span> <span class="pre">)</span></code></td>
 <td>Increment</td>
-<td><code class="docutils literal"><span class="pre">42</span> <span class="pre">)</span>&nbsp; <span class="pre">-&gt;</span>&nbsp; <span class="pre">43</span></code></td>
+<td colspan="2"><code class="docutils literal"><span class="pre">42</span> <span class="pre">)</span>&nbsp; <span class="pre">-&gt;</span>&nbsp; <span class="pre">43</span></code></td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">Array</span> <span class="pre">)</span></code></td>
 <td>Uncons from right</td>
-<td><code class="docutils literal"><span class="pre">[2</span> <span class="pre">7</span> <span class="pre">1</span> <span class="pre">8]</span> <span class="pre">)</span>&nbsp; <span class="pre">-&gt;</span>&nbsp; <span class="pre">[2</span> <span class="pre">7</span> <span class="pre">1]</span> <span class="pre">8</span></code></td>
+<td colspan="2"><code class="docutils literal"><span class="pre">[2</span> <span class="pre">7</span> <span class="pre">1</span> <span class="pre">8]</span> <span class="pre">)</span>&nbsp; <span class="pre">-&gt;</span>&nbsp; <span class="pre">[2</span> <span class="pre">7</span> <span class="pre">1]</span> <span class="pre">8</span></code></td>
 </tr>
 </tbody>
 </table>
