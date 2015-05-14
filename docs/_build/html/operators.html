@@ -71,7 +71,10 @@
           
               <!-- Local TOC -->
               <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">Operator summary</a></li>
+<li><a class="reference internal" href="#">Operator summary</a><ul>
+<li><a class="reference internal" href="#notes">Notes</a></li>
+</ul>
+</li>
 </ul>
 </div>
           
@@ -111,7 +114,14 @@
             
   <div class="section" id="operator-summary">
 <h1>Operator summary<a class="headerlink" href="#operator-summary" title="Permalink to this headline">¶</a></h1>
-<p><em>Note: In some cases, arguments may also be given in a different order to the one listed.</em></p>
+<div class="section" id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>In some cases, arguments may also be given in a different order to the one listed.</li>
+<li>Block operations which require an array will implicitly call <code class="docutils literal"><span class="pre">,</span></code> (range) when given a number.</li>
+</ul>
+</div></blockquote>
 <table border="1" class="docutils">
 <colgroup>
 <col width="9%" />
@@ -155,7 +165,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td>$</td>
+<tr class="row-odd"><td rowspan="2">$</td>
 <td><code class="docutils literal"><span class="pre">Int</span> <span class="pre">$</span></code></td>
 <td>Copy from stack</td>
 <td><div class="first last highlight-python"><div class="highlight"><pre>Suppose stack is [&quot;abc&quot; -4 3]:
@@ -168,8 +178,107 @@
 </div>
 </td>
 </tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">Array</span> <span class="pre">$</span></code></td>
+<td>Sort</td>
+<td><div class="first last highlight-python"><div class="highlight"><pre>[3 0 2 1] $  -&gt;  [0 1 2 3]
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td rowspan="4">%</td>
+<td><code class="docutils literal"><span class="pre">Num</span> <span class="pre">Num</span> <span class="pre">%</span></code></td>
+<td>Modulo</td>
+<td><div class="first last highlight-python"><div class="highlight"><pre>27 5 %  -&gt;  2
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">Array</span> <span class="pre">Num</span> <span class="pre">%</span></code></td>
+<td>Every nth</td>
+<td><div class="first last highlight-python"><div class="highlight"><pre>[0 1 2 3 4] 2 %  -&gt;  [0 2 4]
+[0 1 2 3 4] 3 %  -&gt;  [0 3]
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p class="first"><code class="docutils literal"><span class="pre">String</span> <span class="pre">Char</span>
+<span class="pre">%</span></code></p>
+<p class="last"><code class="docutils literal"><span class="pre">Array</span> <span class="pre">Array</span>
+<span class="pre">%</span></code></p>
+</td>
+<td>Split by</td>
+<td><div class="first last highlight-python"><div class="highlight"><pre>&quot;1,2,3&quot; &#39;, %    -&gt;  [&quot;1&quot; &quot;2&quot; &quot;3&quot;]
+&quot;abcde&quot; &quot;bc&quot; %  -&gt;  [&quot;a&quot; &quot;de&quot;]
+[1 2 3] [2] %   -&gt;  [[1] [3]]
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">Array</span> <span class="pre">Block</span>
+<span class="pre">%</span></code></td>
+<td>Map</td>
+<td><div class="first last highlight-python"><div class="highlight"><pre>[1 2 3] {2*3+} %  -&gt;  [5 7 9]
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td rowspan="2">&amp;</td>
+<td><p class="first"><code class="docutils literal"><span class="pre">Int</span> <span class="pre">Int</span> <span class="pre">&amp;</span></code></p>
+<p class="last"><code class="docutils literal"><span class="pre">Int</span> <span class="pre">Char</span> <span class="pre">&amp;</span></code></p>
+</td>
+<td>Bitwise &#8220;and&#8221;</td>
+<td><div class="first last highlight-python"><div class="highlight"><pre>5 6 &amp;  -&gt;  4
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">Array</span> <span class="pre">Any</span> <span class="pre">&amp;</span></code></td>
+<td>Setwise intersection</td>
+<td><div class="first last highlight-python"><div class="highlight"><pre>[6 1 8 1] [6 1 1 2] &amp;  -&gt;  [6 1]
+&quot;abcde&quot; &#39;f &amp;           -&gt;  &quot;&quot;
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td rowspan="2">(</td>
+<td><p class="first"><code class="docutils literal"><span class="pre">Num</span> <span class="pre">(</span></code></p>
+<p class="last"><code class="docutils literal"><span class="pre">Char</span> <span class="pre">(</span></code></p>
+</td>
+<td>Decrement</td>
+<td><div class="first last highlight-python"><div class="highlight"><pre>42 (   -&gt;  41
+&#39;b (   -&gt;  &#39;a
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">Array</span> <span class="pre">(</span></code></td>
+<td>Uncons from left</td>
+<td><div class="first last highlight-python"><div class="highlight"><pre>[2 7 1 8] (  -&gt;  [7 1 8] 2
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td rowspan="2">)</td>
+<td><p class="first"><code class="docutils literal"><span class="pre">Num</span> <span class="pre">)</span></code></p>
+<p class="last"><code class="docutils literal"><span class="pre">Char</span> <span class="pre">)</span></code></p>
+</td>
+<td>Increment</td>
+<td><div class="first last highlight-python"><div class="highlight"><pre>42 )   -&gt;  43
+&#39;b )   -&gt;  &#39;c
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">Array</span> <span class="pre">)</span></code></td>
+<td>Uncons from right</td>
+<td><div class="first last highlight-python"><div class="highlight"><pre>[2 7 1 8] )  -&gt;  [2 7 1] 8
+</pre></div>
+</div>
+</td>
+</tr>
 </tbody>
 </table>
+</div>
 </div>
 
 
