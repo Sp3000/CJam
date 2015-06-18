@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Intro to CJam &mdash; CJam Tutorial and Docs 1.0 documentation</title>
+  <title>Tutorial #1: Introduction to CJam &mdash; CJam Tutorial and Docs 1.0 documentation</title>
   
 
   
@@ -107,11 +107,14 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Intro to CJam</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Tutorial #1: Introduction to CJam</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#hello-world">Hello, World!</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#numerical-calculations-in-cjam">Numerical calculations in CJam</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#blocks-and-variables">Blocks and variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#arrays-and-characters">Arrays and characters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#converting-types">Converting types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#input-and-output">Input and output</a></li>
 </ul>
 </li>
 </ul>
@@ -138,7 +141,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li>Intro to CJam</li>
+    <li>Tutorial #1: Introduction to CJam</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -151,8 +154,8 @@
 </div>
           <div role="main" class="document">
             
-  <div class="section" id="intro-to-cjam">
-<h1>Intro to CJam<a class="headerlink" href="#intro-to-cjam" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="tutorial-1-introduction-to-cjam">
+<h1>Tutorial #1: Introduction to CJam<a class="headerlink" href="#tutorial-1-introduction-to-cjam" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="getting-started">
 <h2>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
 <p>There are currently two ways to run CJam code.</p>
@@ -238,6 +241,57 @@
 <div class="highlight-python"><div class="highlight"><pre><span class="n">HOUSEBOATHOUSEBOATBOATBOATHOUSE</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="arrays-and-characters">
+<h2>Arrays and characters<a class="headerlink" href="#arrays-and-characters" title="Permalink to this headline">¶</a></h2>
+<p>Arrays are just a collection of items, for instance</p>
+<div class="highlight-python"><div class="highlight"><pre>[1 2 3 &quot;foo&quot;]
+</pre></div>
+</div>
+<p>is an array of four things &#8211; three integers and a string. You can get the length of an array with the <code class="docutils literal"><span class="pre">,</span></code> operator, so <code class="docutils literal"><span class="pre">[1</span> <span class="pre">2</span> <span class="pre">3</span> <span class="pre">&quot;foo&quot;],</span></code> would result in <code class="docutils literal"><span class="pre">4</span></code> (<a class="reference external" href="http://cjam.aditsu.net/#code=%5B1%202%203%20%22foo%22%5D%2C">permalink</a>).</p>
+<p>Funnily enough, there is no special literal for general arrays &#8211; although arrays can be formed by surrounding the items with square brackets <code class="docutils literal"><span class="pre">[]</span></code>, in actuality <code class="docutils literal"><span class="pre">[</span></code> and <code class="docutils literal"><span class="pre">]</span></code> are both <em>operators</em> which start and end an array respectively. This lets you do things like</p>
+<div class="highlight-python"><div class="highlight"><pre>1 2 3 &quot;foo&quot;]
+</pre></div>
+</div>
+<p>which also creates an array of the same four items, but instead works because the <code class="docutils literal"><span class="pre">]</span></code> here wraps the <em>whole stack</em> into an array.</p>
+<p>In CJam, strings are actually a special case of arrays &#8211; CJam strings are just arrays of characters. Aside from integers, doubles, blocks and arrays, the character is CJam&#8217;s fifth and final data type. Character literals take the form <code class="docutils literal"><span class="pre">'&lt;character&gt;</span></code>, i.e. a single quote/apostrophe followed by the character. For example <code class="docutils literal"><span class="pre">5</span> <span class="pre">'$</span></code> prints <code class="docutils literal"><span class="pre">5$</span></code> (<a class="reference external" href="http://cjam.aditsu.net/#code=5%20'%24">permalink</a>).</p>
+<p>There is no escape character for characters, so <code class="docutils literal"><span class="pre">''</span></code> is actually just the single quote character. There <em>is</em>, however, an escape character for strings &#8211; the backslash <code class="docutils literal"><span class="pre">\</span></code>, like most major languages. But unlike most languages, backslashes only escape double quotes and other backslashes in CJam, with every other character preserved as-is. In particular, newlines are perfectly okay in strings, e.g.</p>
+<div class="highlight-python"><div class="highlight"><pre>&quot;This is a double quote: \&quot;
+Backslash followed by &#39;n&#39; is not special: \n&quot;
+</pre></div>
+</div>
+<p>results in (<a class="reference external" href="http://cjam.aditsu.net/#code=%22This%20is%20a%20double%20quote%3A%20%5C%22%0ABackslash%20followed%20by%20'n'%20is%20not%20special%3A%20%5Cn%22">permalink</a>)</p>
+<div class="highlight-python"><div class="highlight"><pre>This is a double quote: &quot;
+Backslash followed by &#39;n&#39; is not special: \n
+</pre></div>
+</div>
+</div>
+<div class="section" id="converting-types">
+<h2>Converting types<a class="headerlink" href="#converting-types" title="Permalink to this headline">¶</a></h2>
+<p>Now that we&#8217;ve seen examples of each CJam data type, here is a summary of operators which convert between types:</p>
+<div class="highlight-python"><div class="highlight"><pre>`       String representation
+c       Convert to character
+d       Convert to double
+i       Convert to integer
+s       Convert to string
+~       Evaluate string/block
+</pre></div>
+</div>
+<p>Backtick <code class="docutils literal"><span class="pre">`</span></code> and <code class="docutils literal"><span class="pre">s</span></code> differ primarily in how arrays are turned into strings. For example, <code class="docutils literal"><span class="pre">[1</span> <span class="pre">2</span> <span class="pre">3]</span> <span class="pre">`</span></code> results in the string <code class="docutils literal"><span class="pre">&quot;[1</span> <span class="pre">2</span> <span class="pre">3]&quot;</span></code> while <code class="docutils literal"><span class="pre">[1</span> <span class="pre">2</span> <span class="pre">3]</span> <span class="pre">s</span></code> results in <code class="docutils literal"><span class="pre">&quot;123&quot;</span></code>.</p>
+</div>
+<div class="section" id="input-and-output">
+<h2>Input and output<a class="headerlink" href="#input-and-output" title="Permalink to this headline">¶</a></h2>
+<p>Here are the main ways of getting input in CJam:</p>
+<div class="highlight-python"><div class="highlight"><pre>l       Read line
+q       Read all input
+r       Read token (whitespace-separated)
+</pre></div>
+</div>
+<p>For instance,</p>
+<div class="highlight-python"><div class="highlight"><pre>l i 2 *
+</pre></div>
+</div>
+<p>takes is a simple program which doubles an input integer (<a class="reference external" href="http://cjam.aditsu.net/#code=l%20i%202%20*&amp;input=6">permalink</a>).</p>
 </div>
 </div>
 
