@@ -57,10 +57,10 @@ In addition to integers, CJam also has doubles. For example, the program ``1.3 2
 
 Here are examples of operators which do numerical calculations: ::
 
-    + - * /         Plus, minus, times, and divide respectively
+    + - * /         Add, subtract, multiply and divide respectively
     ( )             Decrement and increment by one respectively
     %               Modulo
-    #               Exponentiate
+    #               Exponentiate/power
     < = >           Less than, equal to and greater than respectively
     & | ^ ~         Bitwise AND, OR, XOR and NOT respectively (for integers)
 
