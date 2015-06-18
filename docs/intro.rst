@@ -194,7 +194,7 @@ We can then move ``y1`` to the top with ``@``, bringing the ``y`` s together, af
 
     [x1 x2 (y2-y1)^2]
 
-As a side comment, although it appears it should, ``2#`` (power of 2) can't be used in place of ``_*`` here due to the preceding ``-``, which together is parsed as ``-2 #`` (power of -2). Adding a space in between like ``- 2#`` would work, but it is better to use the ``m`` operator, which is designed to act as subtraction when followed by a numeric literal (i.e. ``m2#`` can be used instead of ``-_*``).
+As a side comment, although it appears it could, ``2#`` (power of 2) can't be used in place of ``_*`` here due to the preceding ``-``, which together is parsed as ``-2 #`` (power of -2). Adding a space in between like ``- 2#`` would work, but it is better to use the ``m`` operator, which is designed to act as subtraction when followed by a numeric literal (i.e. ``m2#`` can be used instead of ``-_*``).
 
 Moving on, we can move the top of the stack to the bottom by rotating twice with ``@@``, giving: ::
 
