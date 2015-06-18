@@ -176,19 +176,23 @@
 </div>
 <div class="section" id="blocks-and-variables">
 <h2>Blocks and variables<a class="headerlink" href="#blocks-and-variables" title="Permalink to this headline">¶</a></h2>
-<p>Blocks are a data type in CJam which represent a code block. They can be executed with the <code class="docutils literal"><span class="pre">~</span></code> operator, e.g. the program (<a class="reference external" href="http://cjam.aditsu.net/#code=6%20%7B7*%7D%20~">permalink</a>):</p>
+<p>Block is a data type in CJam which represents a code block. They can be executed with the <code class="docutils literal"><span class="pre">~</span></code> operator, e.g. the program (<a class="reference external" href="http://cjam.aditsu.net/#code=6%20%7B7*%7D%20~">permalink</a>)</p>
 <div class="highlight-python"><div class="highlight"><pre>6 {7*} ~
 </pre></div>
 </div>
-<p>gives the output <code class="docutils literal"><span class="pre">42</span></code>.</p>
-<p>Note how <code class="docutils literal"><span class="pre">~</span></code> executes a block when used on blocks, but performs bitwise not when used on integers. CJam operators are very heavily overloaded, with the same operator doing different things depending on what is at the top of the stack.</p>
-<p>Blocks in CJam are first class objects. They can be assigned to variables, allowing them to act as functions. CJam has 26 variables, one for each uppercase letter, and a variable is assigned to via <code class="docutils literal"><span class="pre">:&lt;variable&gt;</span></code>. For example, the program (<a class="reference external" href="http://cjam.aditsu.net/#code=%7B7*%7D%3AF%206%20F">permalink</a>):</p>
+<p>gives the output</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="mi">42</span>
+</pre></div>
+</div>
+<p>You may notice that <code class="docutils literal"><span class="pre">~</span></code> executes a block when used on blocks, but performs bitwise not when used on integers. CJam operators are very heavily overloaded, with the same operator doing different things depending on what is at the top of the stack.</p>
+<p>Blocks in CJam are first class objects. They can be assigned to variables, allowing them to act as functions. CJam has 26 variables, one for each uppercase letter, and a variable is assigned to via <code class="docutils literal"><span class="pre">:&lt;variable&gt;</span></code>. For example, the program (<a class="reference external" href="http://cjam.aditsu.net/#code=%7B7*%7D%3AF%206%20F">permalink</a>)</p>
 <div class="highlight-python"><div class="highlight"><pre>{7*}:F 6 F
 </pre></div>
 </div>
 <p>results in</p>
-<blockquote>
-<div>{7*}42</div></blockquote>
+<div class="highlight-python"><div class="highlight"><pre>{7*}42
+</pre></div>
+</div>
 <p>Note how the block is also in the output. When something is assigned to a variable, it is not popped from the stack, so the block gets outputted along with the <code class="docutils literal"><span class="pre">42</span></code> when the stack is automatically printed.</p>
 </div>
 </div>
