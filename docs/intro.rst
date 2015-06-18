@@ -175,7 +175,7 @@ Much of CJam's power as a golfing language comes from its stack manipulation ope
 
 Note that ``$`` starts counting from ``0``, so ``0$`` is the same as ``_``. It also allows for negative numbers, e.g. ``-1$`` copies the bottom of the stack.
 
-Also, the easy way to remember which way ``@`` rotates is that since ``\`` moves the second element from the top to the top, it's more useful for ``@`` to move the third element from the top to the top.
+The easy way to remember which way ``@`` rotates is that since ``\`` moves the second element from the top to the top, it's more useful for ``@`` to move the third element from the top to the top.
 
 Example program: Distance calculator
 ------------------------------------
