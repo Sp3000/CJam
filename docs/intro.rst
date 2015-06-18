@@ -154,7 +154,7 @@ For instance, ::
 
 is a simple program which doubles an input integer (`permalink <http://cjam.aditsu.net/#code=l%20i%202%20*&input=6>`__).
 
-Aside from the automatic printing upon program termination, CJam also has two specific operators for output:
+Aside from the automatic printing upon program termination, CJam also has two specific operators for output: ::
 
     o       Print value
     p       Print string representation and newline
