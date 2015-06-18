@@ -55,7 +55,7 @@ Another example is ``4 2 3 * 7 - +``, which results in ``3`` (`permalink <http:/
     
 For debugging, you can insert the two-char operator ``ed`` to print the current stack. For example, ``4 2 3 * 7 ed - +`` (`permalink <http://cjam.aditsu.net/#code=4%202%203%20*%207%20ed%20-%20%2B>`__) prints the state of the stack after the ``7`` is pushed.
     
-In addition to integers, CJam also has doubles. For example, the program ``1.3 2.6 +`` results in ``3.9000000000000004`` (`permalink <http://cjam.aditsu.net/#code=1.3%202.6%20%2B>`__), which is close enough to the expected ``3.9`` (silly `floating point numbers! <https://en.wikipedia.org/wiki/Floating_point#Accuracy_problems>`__).
+In addition to integers, CJam also has doubles. For example, the program ``1.3 2.6 +`` results in ``3.9000000000000004`` (`permalink <http://cjam.aditsu.net/#code=1.3%202.6%20%2B>`__), which is close enough to the expected ``3.9`` (silly `floating point numbers <https://en.wikipedia.org/wiki/Floating_point#Accuracy_problems>`__!).
 
 Here are examples of operators which do numerical calculations: ::
 
@@ -101,7 +101,7 @@ gives the output (`permalink <http://cjam.aditsu.net/#code=%22HOUSE%22%3AA%20%22
 Arrays and characters
 ---------------------
 
-Arrays are just a collection of items, for instance ::
+An array is just a collection of items, for instance ::
 
     [1 2 3 "foo"]
     
@@ -175,7 +175,7 @@ Much of CJam's power as a golfing language comes from its stack manipulation ope
 
 Note that ``$`` starts counting from ``0``, so ``0$`` is the same as ``_``. It also allows for negative numbers, e.g. ``-1$`` copies the bottom of the stack.
 
-Also, the easy way to remember which way ``@`` rotates is that since ``\`` moves the second element down to the top, it's more useful for ``@`` to move the third element down to the top.
+Also, the easy way to remember which way ``@`` rotates is that since ``\`` moves the second element from the top to the top, it's more useful for ``@`` to move the third element from the top to the top.
 
 Example program: Distance calculator
 ------------------------------------

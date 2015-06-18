@@ -55,7 +55,7 @@ Another example is ``4 2 3 * 7 - +``, which results in ``3`` (`permalink <http:/
     
 For debugging, you can insert the two-char operator ``ed`` to print the current stack. For example, ``4 2 3 * 7 ed - +`` (`permalink <http://cjam.aditsu.net/#code=4%202%203%20*%207%20ed%20-%20%2B>`__) prints the state of the stack after the ``7`` is pushed.
     
-In addition to integers, CJam also has doubles. For example, the program ``1.3 2.6 +`` results in ``3.9000000000000004`` (`permalink <http://cjam.aditsu.net/#code=1.3%202.6%20%2B>`__), which is close enough to the expected ``3.9`` (silly `floating point numbers! <https://en.wikipedia.org/wiki/Floating_point#Accuracy_problems>`__).
+In addition to integers, CJam also has doubles. For example, the program ``1.3 2.6 +`` results in ``3.9000000000000004`` (`permalink <http://cjam.aditsu.net/#code=1.3%202.6%20%2B>`__), which is close enough to the expected ``3.9`` (silly `floating point numbers <https://en.wikipedia.org/wiki/Floating_point#Accuracy_problems>`__!).
 
 Here are examples of operators which do numerical calculations: ::
 
