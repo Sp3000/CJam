@@ -22,7 +22,7 @@ Hello, World!
 
 CJam's main source of memory is a stack which can hold values. You can push elements onto the stack and modify the stack with operators. At the end of the program, the contents of the stack are automatically printed.
 
-``Hello, World!`` is very simple in CJam -- we can just push a string onto the stack and let automatic printing do its job (`permalink <http://cjam.aditsu.net/#code=%22Hello%2C%20World!%22>`__). ::
+``Hello, World!`` is very easy in CJam -- we can just push a string onto the stack and let automatic printing do its job (`permalink <http://cjam.aditsu.net/#code=%22Hello%2C%20World!%22>`__). ::
 
     "Hello, World!"
 
