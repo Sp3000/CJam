@@ -8,14 +8,12 @@ Complete
     :maxdepth: 1
 
     0.6.5
+    intro
     
 
 Under construction
 ------------------
 
-.. toctree::
-    :maxdepth: 1
-
-    operators
-    operator-details
-    intro
+* :doc:`Operator Summary <operators>`
+* :doc:`Operator Details <operator-details>`
+    
