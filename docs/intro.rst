@@ -31,17 +31,17 @@ Simple!
 Numerical calculations in CJam
 ------------------------------
 
-To perform calculations in CJam, we can push integers onto the stack and apply operators to them. For example, the program (`permalink <http://cjam.aditsu.net/#code=7%208%20%2B>`__) ::
+To perform calculations in CJam, we can push integers onto the stack and apply operators to them. For example, the program ::
 
     7 8 +
     
-results in the output ::
+results in the output (`permalink <http://cjam.aditsu.net/#code=7%208%20%2B>`__) ::
 
     15
     
 by first pushing ``7`` and ``8`` onto the stack, then performing the ``+`` operator, which adds two integers.
 
-Another example is ``4 2 3 * 7 - +`` (`permalink <http://cjam.aditsu.net/#code=4%202%203%20*%207%20-%20%2B>`__), which results in ``3``. Here is a trace: ::
+Another example is ``4 2 3 * 7 - +``, which results in ``3`` (`permalink <http://cjam.aditsu.net/#code=4%202%203%20*%207%20-%20%2B>`__). Here is a trace: ::
 
     Instruction       What happens           Stack
     -----------       ------------           -----
@@ -53,7 +53,9 @@ Another example is ``4 2 3 * 7 - +`` (`permalink <http://cjam.aditsu.net/#code=4
     -                 Subtract top two       [4 -1]
     +                 Add top two            [3]
     
-In addition to integers, CJam also has doubles. For example, the program ``1.3 2.6 +`` (`permalink <http://cjam.aditsu.net/#code=1.3%202.6%20%2B>`__) results in ``3.9000000000000004``, which is close enough to the expected ``3.9`` (silly `floating point numbers! <https://en.wikipedia.org/wiki/Floating_point#Accuracy_problems>`__).
+For debugging, you can insert the two-char operator ``ed`` to print the current stack. For example, ``4 2 3 * 7 ed - +`` (`permalink <http://cjam.aditsu.net/#code=4%202%203%20*%207%20ed%20-%20%2B>`__) prints the state of the stack after the ``7`` is pushed.
+    
+In addition to integers, CJam also has doubles. For example, the program ``1.3 2.6 +`` results in ``3.9000000000000004`` (`permalink <http://cjam.aditsu.net/#code=1.3%202.6%20%2B>`__), which is close enough to the expected ``3.9`` (silly `floating point numbers! <https://en.wikipedia.org/wiki/Floating_point#Accuracy_problems>`__).
 
 Here are examples of operators which do numerical calculations: ::
 
@@ -61,30 +63,38 @@ Here are examples of operators which do numerical calculations: ::
     ( )             Decrement and increment by one respectively
     %               Modulo
     #               Exponentiate/power
-    < = >           Less than, equal to and greater than respectively
     & | ^ ~         Bitwise AND, OR, XOR and NOT respectively (for integers)
 
-Note that division between two integers in CJam results in integer division, which keeps the integer part of the result. For example, ``5 2 /`` (`permalink <http://cjam.aditsu.net/#code=5%202%20%2F>`__) results in ``2``, rather than ``2.5``. To get floating point division, one of the arguments needs to be a double. For instance, both ``5.0 2 /`` and ``5 2. /`` (`permalink <http://cjam.aditsu.net/#code=5%202.%20%2F>`__) result in ``2.5``. Alternatively, one can convert a number to a double using the ``d`` operator.
+Note that division between two integers in CJam results in integer division, which keeps the integer part of the result. For example, ``5 2 /`` results in ``2``, rather than ``2.5`` (`permalink <http://cjam.aditsu.net/#code=5%202%20%2F>`__). To get floating point division, one of the arguments needs to be a double, for instance both ``5.0 2 /`` and ``5 2. /`` result in ``2.5`` (`permalink <http://cjam.aditsu.net/#code=5%202.%20%2F>`__).
 
 Blocks and variables
 --------------------
 
-Block is a data type in CJam which represents a code block. They can be executed with the ``~`` operator, e.g. the program (`permalink <http://cjam.aditsu.net/#code=6%20%7B7*%7D%20~>`__) ::
+Block is a data type in CJam which represents a code block. They can be executed with the ``~`` operator, e.g. the program ::
 
     6 {7*} ~
     
-gives the output ::
+gives the output (`permalink <http://cjam.aditsu.net/#code=6%20%7B7*%7D%20~>`__) ::
 
     42
 
 You may notice that ``~`` executes a block when used on blocks, but performs bitwise not when used on integers. CJam operators are very heavily overloaded, with the same operator doing different things depending on what is at the top of the stack.
 
-Blocks in CJam are first class objects. They can be assigned to variables, allowing them to act as functions. CJam has 26 variables, one for each uppercase letter, and a variable is assigned to via ``:<variable>``. For example, the program (`permalink <http://cjam.aditsu.net/#code=%7B7*%7D%3AF%206%20F>`__) ::
+Blocks in CJam are first class objects. They can be assigned to variables, allowing them to act as functions. CJam has 26 variables, one for each uppercase letter, and a variable is assigned to via ``:<variable>``. For example, the program ::
 
     {7*}:F 6 F
 
-results in ::
+results in (`permalink <http://cjam.aditsu.net/#code=%7B7*%7D%3AF%206%20F>`__) ::
 
     {7*}42
     
 Note how the block is also in the output. When you assign something to a variable, it is not popped from the stack, so here the block gets outputted along with the ``42`` when the stack is automatically printed.
+
+Of course, you can also assign numbers and strings to variables, which just get pushed onto the stack when "used". For instance, ::
+
+    "HOUSE":A "BOAT":B A B B B A
+    
+gives the output (`permalink <http://cjam.aditsu.net/#code=%22HOUSE%22%3AA%20%22BOAT%22%3AB%20A%20B%20B%20B%20A>`__) ::
+
+    HOUSEBOATHOUSEBOATBOATBOATHOUSE
+    
