@@ -87,4 +87,4 @@ results in ::
 
     {7*}42
     
-Note how the block is also in the output. When something is assigned to a variable, it is not popped from the stack, so the block gets outputted along with the ``42`` when the stack is automatically printed.
+Note how the block is also in the output. When you assign something to a variable, it is not popped from the stack, so here the block gets outputted along with the ``42`` when the stack is automatically printed.
