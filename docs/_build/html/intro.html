@@ -318,12 +318,12 @@ _             Duplicate                    [1 2 3 4 4]
 </div>
 <div class="section" id="example-program-distance-calculator">
 <h2>Example program: Distance calculator<a class="headerlink" href="#example-program-distance-calculator" title="Permalink to this headline">¶</a></h2>
-<p>Let&#8217;s take a look at how we might write an example program which takes in 4 numbers <code class="docutils literal"><span class="pre">x1</span> <span class="pre">y1</span> <span class="pre">x2</span> <span class="pre">y2</span></code> and outputs the Euclidean distance</p>
+<p>Let&#8217;s take a look at how we might write a program which takes in 4 numbers <code class="docutils literal"><span class="pre">x1</span> <span class="pre">y1</span> <span class="pre">x2</span> <span class="pre">y2</span></code> and outputs the Euclidean distance between <code class="docutils literal"><span class="pre">(x1,</span> <span class="pre">y1)</span></code> and <code class="docutils literal"><span class="pre">(x2,</span> <span class="pre">y2)</span></code>, i.e.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">sqrt</span><span class="p">((</span><span class="n">x1</span> <span class="o">-</span> <span class="n">x2</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">y1</span> <span class="o">-</span> <span class="n">y2</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>For example, the input <code class="docutils literal"><span class="pre">3</span> <span class="pre">7</span> <span class="pre">4</span> <span class="pre">5</span></code> should output <code class="docutils literal"><span class="pre">sqrt(5)</span> <span class="pre">~</span> <span class="pre">2.23</span></code>.</p>
-<p>First, we need to read in and convert the input with <code class="docutils literal"><span class="pre">l~</span></code>. <code class="docutils literal"><span class="pre">~</span></code> evaluates the whole string, leaving the stack like</p>
+<p>For example, the input <code class="docutils literal"><span class="pre">3</span> <span class="pre">7</span> <span class="pre">4</span> <span class="pre">5</span></code> would output <code class="docutils literal"><span class="pre">sqrt(5)</span> <span class="pre">~</span> <span class="pre">2.23</span></code>.</p>
+<p>First, we need to read in and convert the input, for which we can use <code class="docutils literal"><span class="pre">l~</span></code>. <code class="docutils literal"><span class="pre">~</span></code> evaluates the whole string, leaving the stack like</p>
 <div class="highlight-python"><div class="highlight"><pre>[x1 y1 x2 y2]
 </pre></div>
 </div>
@@ -331,7 +331,7 @@ _             Duplicate                    [1 2 3 4 4]
 <div class="highlight-python"><div class="highlight"><pre>[x1 x2 (y2-y1)^2]
 </pre></div>
 </div>
-<p>As a side comment, although it appears it should, <code class="docutils literal"><span class="pre">2#</span></code> can&#8217;t be used in place of <code class="docutils literal"><span class="pre">_*</span></code> here due to the preceding <code class="docutils literal"><span class="pre">-</span></code>, which together is parsed as <code class="docutils literal"><span class="pre">-2</span> <span class="pre">#</span></code>. Adding a space in between like <code class="docutils literal"><span class="pre">-</span> <span class="pre">2#</span></code> would work, but it is better to use the <code class="docutils literal"><span class="pre">m</span></code> operator, which is designed to act as subtraction when followed by a numeric literal (i.e. <code class="docutils literal"><span class="pre">m2#</span></code>).</p>
+<p>As a side comment, although it appears it should, <code class="docutils literal"><span class="pre">2#</span></code> can&#8217;t be used in place of <code class="docutils literal"><span class="pre">_*</span></code> here due to the preceding <code class="docutils literal"><span class="pre">-</span></code>, which together is parsed as <code class="docutils literal"><span class="pre">-2</span> <span class="pre">#</span></code>. Adding a space in between like <code class="docutils literal"><span class="pre">-</span> <span class="pre">2#</span></code> would work, but it is better to use the <code class="docutils literal"><span class="pre">m</span></code> operator, which is designed to act as subtraction when followed by a numeric literal (i.e. <code class="docutils literal"><span class="pre">m2#</span></code> can be used instead of <code class="docutils literal"><span class="pre">-_*</span></code>).</p>
 <p>Moving on, we can move the top of the stack to the bottom by rotating twice with <code class="docutils literal"><span class="pre">&#64;&#64;</span></code>, giving:</p>
 <div class="highlight-python"><div class="highlight"><pre>[(y2-y1)^2 x1 x2]
 </pre></div>
@@ -341,13 +341,14 @@ _             Duplicate                    [1 2 3 4 4]
 </pre></div>
 </div>
 <p>Finally, we add and square root with <code class="docutils literal"><span class="pre">+.5#</span></code>, thus leaving the final stack as</p>
-<blockquote>
-<div>[((y2-y1)^2 + (x1-x2)^2)^.5]</div></blockquote>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[((</span><span class="n">y2</span><span class="o">-</span><span class="n">y1</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">x1</span><span class="o">-</span><span class="n">x2</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span><span class="o">^.</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
 <p>Altogether, this gives the program (<a class="reference external" href="http://cjam.aditsu.net/#code=l~%40-_*%40%40-_*%2B.5%23&amp;input=3%207%204%205">permalink</a>)</p>
 <div class="highlight-python"><div class="highlight"><pre>l~@-_*@@-_*+.5#
 </pre></div>
 </div>
-<p>Considering we only used the basic operators here, this is already a fairly short program. However, CJam actually has a builtin hypotenuse function <code class="docutils literal"><span class="pre">mh</span></code>, which is another two-char operator like <code class="docutils literal"><span class="pre">ed</span></code> (<code class="docutils literal"><span class="pre">e</span></code> is for <em>extended</em> operators, and <code class="docutils literal"><span class="pre">m</span></code> is for <em>mathematical</em> operators).  Using this, we can make the program shorter with (<a class="reference external" href="http://cjam.aditsu.net/#code=l~%40-%40%40-mh&amp;input=3%207%204%205">permalink</a>):</p>
+<p>Considering we only used the basic operators here, this is already a fairly short program. However, CJam actually has a builtin hypotenuse function <code class="docutils literal"><span class="pre">mh</span></code>, which is another two-char operator like <code class="docutils literal"><span class="pre">ed</span></code> (<code class="docutils literal"><span class="pre">e</span></code> is for <em>extended</em> operators, while <code class="docutils literal"><span class="pre">m</span></code> is for <em>mathematical</em> operators).  Using this, we can make the program even shorter with (<a class="reference external" href="http://cjam.aditsu.net/#code=l~%40-%40%40-mh&amp;input=3%207%204%205">permalink</a>):</p>
 <div class="highlight-python"><div class="highlight"><pre>l~@-@@-mh
 </pre></div>
 </div>

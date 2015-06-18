@@ -180,13 +180,13 @@ Also, the easy way to remember which way ``@`` rotates is that since ``\`` moves
 Example program: Distance calculator
 ------------------------------------
 
-Let's take a look at how we might write an example program which takes in 4 numbers ``x1 y1 x2 y2`` and outputs the Euclidean distance ::
+Let's take a look at how we might write a program which takes in 4 numbers ``x1 y1 x2 y2`` and outputs the Euclidean distance between ``(x1, y1)`` and ``(x2, y2)``, i.e. ::
 
     sqrt((x1 - x2)^2 + (y1 - y2)^2)
     
-For example, the input ``3 7 4 5`` should output ``sqrt(5) ~ 2.23``.
+For example, the input ``3 7 4 5`` would output ``sqrt(5) ~ 2.23``.
 
-First, we need to read in and convert the input with ``l~``. ``~`` evaluates the whole string, leaving the stack like ::
+First, we need to read in and convert the input, for which we can use ``l~``. ``~`` evaluates the whole string, leaving the stack like ::
 
     [x1 y1 x2 y2]
 
@@ -194,7 +194,7 @@ We can then move ``y1`` to the top with ``@``, subtract with ``-`` and square wi
 
     [x1 x2 (y2-y1)^2]
 
-As a side comment, although it appears it should, ``2#`` can't be used in place of ``_*`` here due to the preceding ``-``, which together is parsed as ``-2 #``. Adding a space in between like ``- 2#`` would work, but it is better to use the ``m`` operator, which is designed to act as subtraction when followed by a numeric literal (i.e. ``m2#``).
+As a side comment, although it appears it should, ``2#`` can't be used in place of ``_*`` here due to the preceding ``-``, which together is parsed as ``-2 #``. Adding a space in between like ``- 2#`` would work, but it is better to use the ``m`` operator, which is designed to act as subtraction when followed by a numeric literal (i.e. ``m2#`` can be used instead of ``-_*``).
 
 Moving on, we can move the top of the stack to the bottom by rotating twice with ``@@``, giving: ::
 
@@ -212,7 +212,7 @@ Altogether, this gives the program (`permalink <http://cjam.aditsu.net/#code=l~%
 
     l~@-_*@@-_*+.5#
     
-Considering we only used the basic operators here, this is already a fairly short program. However, CJam actually has a builtin hypotenuse function ``mh``, which is another two-char operator like ``ed`` (``e`` is for *extended* operators, while ``m`` is for *mathematical* operators).  Using this, we can make the program shorter with (`permalink <http://cjam.aditsu.net/#code=l~%40-%40%40-mh&input=3%207%204%205>`__)::
+Considering we only used the basic operators here, this is already a fairly short program. However, CJam actually has a builtin hypotenuse function ``mh``, which is another two-char operator like ``ed`` (``e`` is for *extended* operators, while ``m`` is for *mathematical* operators).  Using this, we can make the program even shorter with (`permalink <http://cjam.aditsu.net/#code=l~%40-%40%40-mh&input=3%207%204%205>`__)::
 
     l~@-@@-mh
 
