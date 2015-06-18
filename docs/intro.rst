@@ -41,7 +41,7 @@ results in the output ::
     
 by first pushing ``7`` and ``8`` onto the stack, then performing the ``+`` operator, which adds two integers.
 
-Another example is ``4 2 3 * 7 - +`` (`permalink <http://cjam.aditsu.net/#code=4%202%203%20*%207%20-%20%2B>`__) which results in ``3``. Here is a trace: ::
+Another example is ``4 2 3 * 7 - +`` (`permalink <http://cjam.aditsu.net/#code=4%202%203%20*%207%20-%20%2B>`__), which results in ``3``. Here is a trace: ::
 
     Instruction       What happens           Stack
     -----------       ------------           -----
@@ -53,7 +53,7 @@ Another example is ``4 2 3 * 7 - +`` (`permalink <http://cjam.aditsu.net/#code=4
     -                 Subtract top two       [4 -1]
     +                 Add top two            [3]
     
-In addition to integers, CJam also has doubles. For example, the program ``1.3 2.6 +`` (`permalink <http://cjam.aditsu.net/#code=1.3%202.6%20%2B>`__) results in ``3.9000000000000004``, which is close enough (silly `floating point numbers! <https://en.wikipedia.org/wiki/Floating_point#Accuracy_problems>`__).
+In addition to integers, CJam also has doubles. For example, the program ``1.3 2.6 +`` (`permalink <http://cjam.aditsu.net/#code=1.3%202.6%20%2B>`__) results in ``3.9000000000000004``, which is close enough to the expected ``3.9`` (silly `floating point numbers! <https://en.wikipedia.org/wiki/Floating_point#Accuracy_problems>`__).
 
 Here are examples of operators which do numerical calculations: ::
 
@@ -63,8 +63,8 @@ Here are examples of operators which do numerical calculations: ::
     #               Exponentiate
     < = >           Less than, equal to and greater than respectively
     & | ^ ~         Bitwise AND, OR, XOR and NOT respectively (for integers)
-    
-Note that division between two integers in CJam results in integer division, which keeps the integer part of the result. For example, ``5 2 /`` (`permalink <http://cjam.aditsu.net/#code=5%202%20%2F>`__) results in ``2``, rather than ``2.5``. For floating point division, one of the arguments needs to be a double, for example ``5.0 2 /`` and ``5 2. /`` (`permalink <http://cjam.aditsu.net/#code=5%202.%20%2F>`__) both result in ``2.5``.
+
+Note that division between two integers in CJam results in integer division, which keeps the integer part of the result. For example, ``5 2 /`` (`permalink <http://cjam.aditsu.net/#code=5%202%20%2F>`__) results in ``2``, rather than ``2.5``. To get floating point division, one of the arguments needs to be a double. For instance, both ``5.0 2 /`` and ``5 2. /`` (`permalink <http://cjam.aditsu.net/#code=5%202.%20%2F>`__) result in ``2.5``. Alternatively, one can convert a number to a double using the ``d`` operator.
 
 Blocks and variables
 --------------------

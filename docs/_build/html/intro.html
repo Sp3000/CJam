@@ -70,7 +70,7 @@
         
           
           
-              <ul class="current">
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="0.6.5.html">New Operators in CJam 0.6.5</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="0.6.5.html#vector-operators">Vector operators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="0.6.5.html#w-while-loops"><code class="docutils literal"><span class="pre">w</span></code> &#8211; while loops</a></li>
@@ -92,6 +92,8 @@
 <li class="toctree-l2"><a class="reference internal" href="0.6.5.html#and-for-blocks-if-with-only-then-or-only-else"><code class="docutils literal"><span class="pre">&amp;</span></code> and <code class="docutils literal"><span class="pre">|</span></code> for blocks &#8211; &#8220;if&#8221; with only &#8220;then&#8221; or only &#8220;else&#8221;</a></li>
 </ul>
 </li>
+</ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="operators.html">Operator summary</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="operators.html#notes">Notes</a></li>
 </ul>
@@ -184,7 +186,7 @@
 </pre></div>
 </div>
 <p>by first pushing <code class="docutils literal"><span class="pre">7</span></code> and <code class="docutils literal"><span class="pre">8</span></code> onto the stack, then performing the <code class="docutils literal"><span class="pre">+</span></code> operator, which adds two integers.</p>
-<p>Another example is <code class="docutils literal"><span class="pre">4</span> <span class="pre">2</span> <span class="pre">3</span> <span class="pre">*</span> <span class="pre">7</span> <span class="pre">-</span> <span class="pre">+</span></code> (<a class="reference external" href="http://cjam.aditsu.net/#code=4%202%203%20*%207%20-%20%2B">permalink</a>) which results in <code class="docutils literal"><span class="pre">3</span></code>. Here is a trace:</p>
+<p>Another example is <code class="docutils literal"><span class="pre">4</span> <span class="pre">2</span> <span class="pre">3</span> <span class="pre">*</span> <span class="pre">7</span> <span class="pre">-</span> <span class="pre">+</span></code> (<a class="reference external" href="http://cjam.aditsu.net/#code=4%202%203%20*%207%20-%20%2B">permalink</a>), which results in <code class="docutils literal"><span class="pre">3</span></code>. Here is a trace:</p>
 <div class="highlight-python"><div class="highlight"><pre>Instruction       What happens           Stack
 -----------       ------------           -----
 4                 Push 4                 [4]
@@ -196,7 +198,7 @@
 +                 Add top two            [3]
 </pre></div>
 </div>
-<p>In addition to integers, CJam also has doubles. For example, the program <code class="docutils literal"><span class="pre">1.3</span> <span class="pre">2.6</span> <span class="pre">+</span></code> (<a class="reference external" href="http://cjam.aditsu.net/#code=1.3%202.6%20%2B">permalink</a>) results in <code class="docutils literal"><span class="pre">3.9000000000000004</span></code>, which is close enough (silly <a class="reference external" href="https://en.wikipedia.org/wiki/Floating_point#Accuracy_problems">floating point numbers!</a>).</p>
+<p>In addition to integers, CJam also has doubles. For example, the program <code class="docutils literal"><span class="pre">1.3</span> <span class="pre">2.6</span> <span class="pre">+</span></code> (<a class="reference external" href="http://cjam.aditsu.net/#code=1.3%202.6%20%2B">permalink</a>) results in <code class="docutils literal"><span class="pre">3.9000000000000004</span></code>, which is close enough to the expected <code class="docutils literal"><span class="pre">3.9</span></code> (silly <a class="reference external" href="https://en.wikipedia.org/wiki/Floating_point#Accuracy_problems">floating point numbers!</a>).</p>
 <p>Here are examples of operators which do numerical calculations:</p>
 <div class="highlight-python"><div class="highlight"><pre>+ - * /         Plus, minus, times, and divide respectively
 ( )             Increment and decrement by one respectively
@@ -206,7 +208,7 @@
 &amp; | ^ ~         Bitwise AND, OR, XOR and NOT respectively (for integers)
 </pre></div>
 </div>
-<p>Note that division between two integers in CJam results in integer division, which keeps the integer part of the result. For example, <code class="docutils literal"><span class="pre">5</span> <span class="pre">2</span> <span class="pre">/</span></code> (<a class="reference external" href="http://cjam.aditsu.net/#code=5%202%20%2F">permalink</a>) results in <code class="docutils literal"><span class="pre">2</span></code>, rather than <code class="docutils literal"><span class="pre">2.5</span></code>. For floating point division, one of the arguments needs to be a double, for example <code class="docutils literal"><span class="pre">5.0</span> <span class="pre">2</span> <span class="pre">/</span></code> and <code class="docutils literal"><span class="pre">5</span> <span class="pre">2.</span> <span class="pre">/</span></code> (<a class="reference external" href="http://cjam.aditsu.net/#code=5%202.%20%2F">permalink</a>) both result in <code class="docutils literal"><span class="pre">2.5</span></code>.</p>
+<p>Note that division between two integers in CJam results in integer division, which keeps the integer part of the result. For example, <code class="docutils literal"><span class="pre">5</span> <span class="pre">2</span> <span class="pre">/</span></code> (<a class="reference external" href="http://cjam.aditsu.net/#code=5%202%20%2F">permalink</a>) results in <code class="docutils literal"><span class="pre">2</span></code>, rather than <code class="docutils literal"><span class="pre">2.5</span></code>. To get floating point division, one of the arguments needs to be a double. For instance, both <code class="docutils literal"><span class="pre">5.0</span> <span class="pre">2</span> <span class="pre">/</span></code> and <code class="docutils literal"><span class="pre">5</span> <span class="pre">2.</span> <span class="pre">/</span></code> (<a class="reference external" href="http://cjam.aditsu.net/#code=5%202.%20%2F">permalink</a>) result in <code class="docutils literal"><span class="pre">2.5</span></code>. Alternatively, one can convert a number to a double using the <code class="docutils literal"><span class="pre">d</span></code> operator.</p>
 </div>
 <div class="section" id="blocks-and-variables">
 <h2>Blocks and variables<a class="headerlink" href="#blocks-and-variables" title="Permalink to this headline">¶</a></h2>
