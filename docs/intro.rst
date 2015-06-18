@@ -204,7 +204,7 @@ Then we subtract and square again with ``-_*``: ::
 
     [(y2-y1)^2 (x1-x2)^2]
     
-Finally, we add and square root with ``+.5#``, thus leaving the final stack as
+Finally, we add and square root with ``+.5#``, thus leaving the final stack as ::
 
     [((y2-y1)^2 + (x1-x2)^2)^.5]
     
@@ -212,7 +212,7 @@ Altogether, this gives the program (`permalink <http://cjam.aditsu.net/#code=l~%
 
     l~@-_*@@-_*+.5#
     
-Considering we only used the basic operators here, this is already a fairly short program. However, CJam actually has a builtin hypotenuse function ``mh``, which is another two-char operator like ``ed`` (``e`` is for *extended* operators, and ``m`` is for *mathematical* operators).  Using this, we can make the program shorter with (`permalink <http://cjam.aditsu.net/#code=l~%40-%40%40-mh&input=3%207%204%205>`__)::
+Considering we only used the basic operators here, this is already a fairly short program. However, CJam actually has a builtin hypotenuse function ``mh``, which is another two-char operator like ``ed`` (``e`` is for *extended* operators, while ``m`` is for *mathematical* operators).  Using this, we can make the program shorter with (`permalink <http://cjam.aditsu.net/#code=l~%40-%40%40-mh&input=3%207%204%205>`__)::
 
     l~@-@@-mh
 
