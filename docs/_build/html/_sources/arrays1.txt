@@ -39,7 +39,7 @@ results in ``5`` (`permalink <http://cjam.aditsu.net/#code=%5B%22this%22%20%22ar
 Getting and setting
 -------------------
 
-Getting an element from an array can be done with ``=``. A nice feature is that out of bounds indices wrap around. (`permalink <http://cjam.aditsu.net/#code=%5B1%204%202%208%205%207%5D%20%20%20%20%200%20%3D%20%20p%0A%5B1%204%202%208%205%207%5D%20%20%20%20%203%20%3D%20%20p%0A%5B1%204%202%208%205%207%5D%20%20%20%20%205%20%3D%20%20p%0A%5B1%204%202%208%205%207%5D%20%20%20%20%206%20%3D%20%20p%0A%5B1%204%202%208%205%207%5D%20%20%20%20-2%20%3D%20%20p%0A%5B1%204%202%208%205%207%5D%20-1000%20%3D%20%20p>`__) ::
+Getting an element from an array can be done with ``=``. A nice feature is that out-of-ddbounds indices wrap around. (`permalink <http://cjam.aditsu.net/#code=%5B1%204%202%208%205%207%5D%20%20%20%20%200%20%3D%20%20p%0A%5B1%204%202%208%205%207%5D%20%20%20%20%203%20%3D%20%20p%0A%5B1%204%202%208%205%207%5D%20%20%20%20%205%20%3D%20%20p%0A%5B1%204%202%208%205%207%5D%20%20%20%20%206%20%3D%20%20p%0A%5B1%204%202%208%205%207%5D%20%20%20%20-2%20%3D%20%20p%0A%5B1%204%202%208%205%207%5D%20-1000%20%3D%20%20p>`__) ::
 
     [1 4 2 8 5 7]     0 =      ->   1
     [1 4 2 8 5 7]     5 =      ->   7
@@ -51,7 +51,7 @@ Setting a position in an array is done with ``t``, with the index followed by th
     
 	[1 4 2 8 5 7]  0 -3 t      ->   [-3 4 2 8 5 7]
 	
-Similarly to ``=``, ``t`` also wraps around for out of bounds indices.
+Similarly to ``=``, ``t`` also wraps around for out-of-bounds indices.
 
 Slices
 ------
@@ -180,3 +180,42 @@ For instance (`permalink <http://cjam.aditsu.net/#code=%5B1%204%202%208%205%207%
     [1 4 2 8 5 7] [1 7 2 9] -    ->    [4 8 5]
 
 A common idiom for removing duplicates from an array is to simply do ``_&``, intersecting the array with itself.
+
+Example program: Name sorter
+----------------------------
+
+Suppose we have a list of properly capitalised names in the format ``<first name> <last name>``, e.g. ::
+
+    John Doe
+    Jane Smith
+    John Smith
+    Tommy Atkins
+    Jane Doe
+    Foo Bar
+
+We want to sort this list by last name, with ties broken by first name.
+
+First we need to read in the input with ``q`` and split by newlines with ``N/``. This gives an array of strings: ::
+
+    ["John Doe" "Jane Smith" "John Smith" "Tommy Atkins" "Jane Doe" "Foo Bar"]
+
+Clearly sorting normally is not sufficient here, so we'll need to sort with a block like ``{}$``. To include a tie breaker in our sort, we will use an array as the key. Since last names take priority, the key array will simply be the last name followed by the first name.
+
+Suppose we're in the situation where we're looking at a name, say ``"John Doe"``. To get the key we just split by spaces with ``S/`` to get ``["John" "Doe"]``, then reverse the array with ``W%`` to give the sorting key ``["Doe" "John"]``.
+
+Putting this together, after ``{S/W%}$`` we get ::
+
+    ["Tommy Atkins" "Foo Bar" "Jane Doe" "John Doe" "Jane Smith" "John Smith"]
+
+All that remains is to join with newlines ``N*`` to get the final list: ::
+
+    Tommy Atkins
+    Foo Bar
+    Jane Doe
+    John Doe
+    Jane Smith
+    John Smith
+
+And the final program is (`permalink <http://cjam.aditsu.net/#code=qN%2F%7BS%2FW%25%7D%24N*&input=John%20Doe%0AJane%20Smith%0AJohn%20Smith%0ATommy%20Atkins%0AJane%20Doe%0AFoo%20Bar>`__)::
+
+    qN/{S/W%}$N*

@@ -96,6 +96,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#split">Split</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#join">Join</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#set-operations">Set operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-program-name-sorter">Example program: Name sorter</a></li>
 </ul>
 </li>
 </ul>
@@ -207,7 +208,7 @@
 </div>
 <div class="section" id="getting-and-setting">
 <h2>Getting and setting<a class="headerlink" href="#getting-and-setting" title="Permalink to this headline">¶</a></h2>
-<p>Getting an element from an array can be done with <code class="docutils literal"><span class="pre">=</span></code>. A nice feature is that out of bounds indices wrap around. (<a class="reference external" href="http://cjam.aditsu.net/#code=%5B1%204%202%208%205%207%5D%20%20%20%20%200%20%3D%20%20p%0A%5B1%204%202%208%205%207%5D%20%20%20%20%203%20%3D%20%20p%0A%5B1%204%202%208%205%207%5D%20%20%20%20%205%20%3D%20%20p%0A%5B1%204%202%208%205%207%5D%20%20%20%20%206%20%3D%20%20p%0A%5B1%204%202%208%205%207%5D%20%20%20%20-2%20%3D%20%20p%0A%5B1%204%202%208%205%207%5D%20-1000%20%3D%20%20p">permalink</a>)</p>
+<p>Getting an element from an array can be done with <code class="docutils literal"><span class="pre">=</span></code>. A nice feature is that out-of-ddbounds indices wrap around. (<a class="reference external" href="http://cjam.aditsu.net/#code=%5B1%204%202%208%205%207%5D%20%20%20%20%200%20%3D%20%20p%0A%5B1%204%202%208%205%207%5D%20%20%20%20%203%20%3D%20%20p%0A%5B1%204%202%208%205%207%5D%20%20%20%20%205%20%3D%20%20p%0A%5B1%204%202%208%205%207%5D%20%20%20%20%206%20%3D%20%20p%0A%5B1%204%202%208%205%207%5D%20%20%20%20-2%20%3D%20%20p%0A%5B1%204%202%208%205%207%5D%20-1000%20%3D%20%20p">permalink</a>)</p>
 <div class="highlight-python"><div class="highlight"><pre>[1 4 2 8 5 7]     0 =      -&gt;   1
 [1 4 2 8 5 7]     5 =      -&gt;   7
 [1 4 2 8 5 7]     6 =      -&gt;   1
@@ -219,7 +220,7 @@
 <div class="highlight-python"><div class="highlight"><pre>[1 4 2 8 5 7]  0 -3 t      -&gt;   [-3 4 2 8 5 7]
 </pre></div>
 </div>
-<p>Similarly to <code class="docutils literal"><span class="pre">=</span></code>, <code class="docutils literal"><span class="pre">t</span></code> also wraps around for out of bounds indices.</p>
+<p>Similarly to <code class="docutils literal"><span class="pre">=</span></code>, <code class="docutils literal"><span class="pre">t</span></code> also wraps around for out-of-bounds indices.</p>
 </div>
 <div class="section" id="slices">
 <h2>Slices<a class="headerlink" href="#slices" title="Permalink to this headline">¶</a></h2>
@@ -339,6 +340,42 @@ Collapse runs of spaces:
 </pre></div>
 </div>
 <p>A common idiom for removing duplicates from an array is to simply do <code class="docutils literal"><span class="pre">_&amp;</span></code>, intersecting the array with itself.</p>
+</div>
+<div class="section" id="example-program-name-sorter">
+<h2>Example program: Name sorter<a class="headerlink" href="#example-program-name-sorter" title="Permalink to this headline">¶</a></h2>
+<p>Suppose we have a list of properly capitalised names in the format <code class="docutils literal"><span class="pre">&lt;first</span> <span class="pre">name&gt;</span> <span class="pre">&lt;last</span> <span class="pre">name&gt;</span></code>, e.g.</p>
+<div class="highlight-python"><div class="highlight"><pre>John Doe
+Jane Smith
+John Smith
+Tommy Atkins
+Jane Doe
+Foo Bar
+</pre></div>
+</div>
+<p>We want to sort this list by last name, with ties broken by first name.</p>
+<p>First we need to read in the input with <code class="docutils literal"><span class="pre">q</span></code> and split by newlines with <code class="docutils literal"><span class="pre">N/</span></code>. This gives an array of strings:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="s">&quot;John Doe&quot;</span> <span class="s">&quot;Jane Smith&quot;</span> <span class="s">&quot;John Smith&quot;</span> <span class="s">&quot;Tommy Atkins&quot;</span> <span class="s">&quot;Jane Doe&quot;</span> <span class="s">&quot;Foo Bar&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Clearly sorting normally is not sufficient here, so we&#8217;ll need to sort with a block like <code class="docutils literal"><span class="pre">{}$</span></code>. To include a tie breaker in our sort, we will use an array as the key. Since last names take priority, the key array will simply be the last name followed by the first name.</p>
+<p>Suppose we&#8217;re in the situation where we&#8217;re looking at a name, say <code class="docutils literal"><span class="pre">&quot;John</span> <span class="pre">Doe&quot;</span></code>. To get the key we just split by spaces with <code class="docutils literal"><span class="pre">S/</span></code> to get <code class="docutils literal"><span class="pre">[&quot;John&quot;</span> <span class="pre">&quot;Doe&quot;]</span></code>, then reverse the array with <code class="docutils literal"><span class="pre">W%</span></code> to give the sorting key <code class="docutils literal"><span class="pre">[&quot;Doe&quot;</span> <span class="pre">&quot;John&quot;]</span></code>.</p>
+<p>Putting this together, after <code class="docutils literal"><span class="pre">{S/W%}$</span></code> we get</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="s">&quot;Tommy Atkins&quot;</span> <span class="s">&quot;Foo Bar&quot;</span> <span class="s">&quot;Jane Doe&quot;</span> <span class="s">&quot;John Doe&quot;</span> <span class="s">&quot;Jane Smith&quot;</span> <span class="s">&quot;John Smith&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>All that remains is to join with newlines <code class="docutils literal"><span class="pre">N*</span></code> to get the final list:</p>
+<div class="highlight-python"><div class="highlight"><pre>Tommy Atkins
+Foo Bar
+Jane Doe
+John Doe
+Jane Smith
+John Smith
+</pre></div>
+</div>
+<p>And the final program is (<a class="reference external" href="http://cjam.aditsu.net/#code=qN%2F%7BS%2FW%25%7D%24N*&amp;input=John%20Doe%0AJane%20Smith%0AJohn%20Smith%0ATommy%20Atkins%0AJane%20Doe%0AFoo%20Bar">permalink</a>):</p>
+<div class="highlight-python"><div class="highlight"><pre>qN/{S/W%}$N*
+</pre></div>
+</div>
 </div>
 </div>
 
