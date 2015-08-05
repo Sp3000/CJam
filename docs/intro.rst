@@ -97,7 +97,9 @@ Of course, you can also assign numbers and strings to variables, which just get 
 gives the output (`permalink <http://cjam.aditsu.net/#code=%22HOUSE%22%3AA%20%22BOAT%22%3AB%20A%20B%20B%20B%20A>`__) ::
 
     HOUSEBOATHOUSEBOATBOATBOATHOUSE
-    
+
+Each of CJam's variables is preinitialised with a value, the full list of which can be found `here <http://sourceforge.net/p/cjam/wiki/Variables/>`__.
+
 Arrays and characters
 ---------------------
 

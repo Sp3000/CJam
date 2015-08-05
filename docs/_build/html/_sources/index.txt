@@ -1,19 +1,23 @@
 CJam Tutorial and Docs
 ======================
 
-Complete
---------
+Tutorials
+---------
+
+.. toctree::
+    :maxdepth: 1
+
+    intro
+    arrays1
+
+Docs
+-------------
 
 .. toctree::
     :maxdepth: 1
 
     0.6.5
-    intro
+    Operator Summary * <operators>
+    Operator Details * <operator-details>
     
-
-Under construction
-------------------
-
-* :doc:`Operator Summary <operators>`
-* :doc:`Operator Details <operator-details>`
-    
+Pages marked with * are incomplete and under construction.

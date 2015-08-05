@@ -1,0 +1,412 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Tutorial #2: Basic array manipulations &mdash; CJam Tutorial and Docs 1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="CJam Tutorial and Docs 1.0 documentation" href="index.html"/>
+        <link rel="next" title="New Operators in CJam 0.6.5" href="0.6.5.html"/>
+        <link rel="prev" title="Tutorial #1: Introduction to CJam" href="intro.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="index.html" class="icon icon-home"> CJam Tutorial and Docs
+        
+
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Tutorial #1: Introduction to CJam</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#getting-started">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#hello-world">Hello, World!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#numerical-calculations-in-cjam">Numerical calculations in CJam</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#blocks-and-variables">Blocks and variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#arrays-and-characters">Arrays and characters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#converting-types">Converting types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#input-and-output">Input and output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#stack-manipulation">Stack manipulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#example-program-distance-calculator">Example program: Distance calculator</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Tutorial #2: Basic array manipulations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#wrapping-and-unwrapping">Wrapping and unwrapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#concatenation">Concatenation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ranges">Ranges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#getting-and-setting">Getting and setting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#slices">Slices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#uncons">Uncons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sort">Sort</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#find-index">Find index</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#split">Split</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#join">Join</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#set-operations">Set operations</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="0.6.5.html">New Operators in CJam 0.6.5</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="0.6.5.html#vector-operators">Vector operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.6.5.html#w-while-loops"><code class="docutils literal"><span class="pre">w</span></code> &#8211; while loops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.6.5.html#mq-integer-square-root"><code class="docutils literal"><span class="pre">mQ</span></code> &#8211; integer square root</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.6.5.html#mr-random-choice"><code class="docutils literal"><span class="pre">mR</span></code> &#8211; random choice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.6.5.html#e-line-comment"><code class="docutils literal"><span class="pre">e#</span></code> &#8211; line comment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.6.5.html#e-string-formatting-a-la-printf"><code class="docutils literal"><span class="pre">e%</span></code> &#8211; string formatting a la printf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.6.5.html#e-repeat-each-item"><code class="docutils literal"><span class="pre">e*</span></code> &#8211; repeat each item</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.6.5.html#e-swap-array-items"><code class="docutils literal"><span class="pre">e\</span></code> &#8211; swap array items</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.6.5.html#e-count-occurrences"><code class="docutils literal"><span class="pre">e=</span></code> &#8211; count occurrences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.6.5.html#e-permutations"><code class="docutils literal"><span class="pre">e!</span></code> &#8211; permutations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.6.5.html#m-factorial-and-permutations-with-duplicates"><code class="docutils literal"><span class="pre">m!</span></code> &#8211; factorial and permutations with duplicates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.6.5.html#e-flatten"><code class="docutils literal"><span class="pre">e_</span></code> &#8211; flatten</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.6.5.html#e-and-e-run-length-encode-decode"><code class="docutils literal"><span class="pre">e`</span></code> and <code class="docutils literal"><span class="pre">e~</span></code> &#8211; run length encode/decode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.6.5.html#ew-overlapping-slices"><code class="docutils literal"><span class="pre">ew</span></code> &#8211; overlapping slices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.6.5.html#e-and-e-left-right-array-padding"><code class="docutils literal"><span class="pre">e[</span></code> and <code class="docutils literal"><span class="pre">e]</span></code> &#8211; left/right array padding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.6.5.html#m-with-array-and-number-cartesian-power"><code class="docutils literal"><span class="pre">m*</span></code> with array and number  &#8211; Cartesian power</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.6.5.html#ee-enumerate"><code class="docutils literal"><span class="pre">ee</span></code> &#8211; enumerate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.6.5.html#and-for-blocks-if-with-only-then-or-only-else"><code class="docutils literal"><span class="pre">&amp;</span></code> and <code class="docutils literal"><span class="pre">|</span></code> for blocks &#8211; &#8220;if&#8221; with only &#8220;then&#8221; or only &#8220;else&#8221;</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="operators.html">Operator Summary *</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="operators.html#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="operator-details.html">Operator Details *</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="operator-details.html#basic-arithmetic">Basic arithmetic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="operator-details.html#x-num-y-num-power-exponentiation"><code class="docutils literal"><span class="pre">x:Num</span> <span class="pre">y:Num</span> <span class="pre">#</span></code> &#8211; power/exponentiation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="operator-details.html#logical-operations">Logical operations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="operator-details.html#any-boolean-not"><code class="docutils literal"><span class="pre">Any</span> <span class="pre">!</span></code> &#8211; boolean &#8220;not&#8221;</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">CJam Tutorial and Docs</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Tutorial #2: Basic array manipulations</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/arrays1.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="tutorial-2-basic-array-manipulations">
+<h1>Tutorial #2: Basic array manipulations<a class="headerlink" href="#tutorial-2-basic-array-manipulations" title="Permalink to this headline">¶</a></h1>
+<p>Now that we&#8217;ve had a quick introduction, we&#8217;ll be taking a look at the core features which make CJam such an expressive language, starting with the ever-versatile array.</p>
+<div class="section" id="wrapping-and-unwrapping">
+<h2>Wrapping and unwrapping<a class="headerlink" href="#wrapping-and-unwrapping" title="Permalink to this headline">¶</a></h2>
+<p>We&#8217;ve seen that arrays can be created with <code class="docutils literal"><span class="pre">[</span></code> and <code class="docutils literal"><span class="pre">]</span></code>, which are actually operators. Additionally, there is an <code class="docutils literal"><span class="pre">a</span></code> command, which wraps the top element of the stack into an array (<a class="reference external" href="http://cjam.aditsu.net/#code=2%20a%20p">permalink</a>).</p>
+<div class="highlight-python"><div class="highlight"><pre>2 a    -&gt;    [2]
+</pre></div>
+</div>
+<p>Arrays can be unwrapped using <code class="docutils literal"><span class="pre">~</span></code>, pushing its elements onto the stack (<a class="reference external" href="http://cjam.aditsu.net/#code=%22another%20element%22%20%5B1%202%203%5D%20ed%20~%20ed">permalink</a>):</p>
+<div class="highlight-python"><div class="highlight"><pre>[1 2 3] ~    -&gt;    1 2 3
+</pre></div>
+</div>
+<p>Note that this doesn&#8217;t work for strings, i.e. arrays consisting of only characters, for which <code class="docutils literal"><span class="pre">~</span></code> is eval. If dumping a string&#8217;s characters to the stack is desired, then an empty for-each loop <code class="docutils literal"><span class="pre">{}/</span></code> can be used instead (we&#8217;ll look more closely at blocks in a later tutorial).</p>
+</div>
+<div class="section" id="concatenation">
+<h2>Concatenation<a class="headerlink" href="#concatenation" title="Permalink to this headline">¶</a></h2>
+<p>Two arrays can be concatenated with <code class="docutils literal"><span class="pre">+</span></code> (<a class="reference external" href="http://cjam.aditsu.net/#code=%5B1%204%202%5D%20%5B8%205%207%5D%20%2B%20p">permalink</a>):</p>
+<div class="highlight-python"><div class="highlight"><pre>[1 4 2] [8 5 7] +    -&gt;    [1 4 2 8 5 7]
+</pre></div>
+</div>
+</div>
+<div class="section" id="ranges">
+<h2>Ranges<a class="headerlink" href="#ranges" title="Permalink to this headline">¶</a></h2>
+<p>Recall that <code class="docutils literal"><span class="pre">,</span></code> on an array gives the length of an array, so</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="s">&quot;this&quot;</span> <span class="s">&quot;array&quot;</span> <span class="s">&quot;has&quot;</span> <span class="s">&quot;five&quot;</span> <span class="s">&quot;elements&quot;</span><span class="p">]</span> <span class="p">,</span>
+</pre></div>
+</div>
+<p>results in <code class="docutils literal"><span class="pre">5</span></code> (<a class="reference external" href="http://cjam.aditsu.net/#code=%5B%22this%22%20%22array%22%20%22has%22%20%22five%22%20%22elements%22%5D%20%2C">permalink</a>). <code class="docutils literal"><span class="pre">,</span></code> on an integer <em>creates</em> an array, namely it is a range operator which produces <code class="docutils literal"><span class="pre">[0</span> <span class="pre">1</span> <span class="pre">...</span> <span class="pre">n-1]</span></code>: (<a class="reference external" href="http://cjam.aditsu.net/#code=5%2C%20p">permalink</a>):</p>
+<div class="highlight-python"><div class="highlight"><pre>5,    -&gt;    [0 1 2 3 4]
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">,</span></code> also acts as a range operator on characters, where it creates a string instead. For instance, <code class="docutils literal"><span class="pre">'a,</span></code> results in the first 97 ASCII characters, including the initial unprintables (<a class="reference external" href="http://cjam.aditsu.net/#code='a%2C">permalink</a>).</p>
+</div>
+<div class="section" id="getting-and-setting">
+<h2>Getting and setting<a class="headerlink" href="#getting-and-setting" title="Permalink to this headline">¶</a></h2>
+<p>Getting an element from an array can be done with <code class="docutils literal"><span class="pre">=</span></code>. A nice feature is that out of bounds indices wrap around. (<a class="reference external" href="http://cjam.aditsu.net/#code=%5B1%204%202%208%205%207%5D%20%20%20%20%200%20%3D%20%20p%0A%5B1%204%202%208%205%207%5D%20%20%20%20%203%20%3D%20%20p%0A%5B1%204%202%208%205%207%5D%20%20%20%20%205%20%3D%20%20p%0A%5B1%204%202%208%205%207%5D%20%20%20%20%206%20%3D%20%20p%0A%5B1%204%202%208%205%207%5D%20%20%20%20-2%20%3D%20%20p%0A%5B1%204%202%208%205%207%5D%20-1000%20%3D%20%20p">permalink</a>)</p>
+<div class="highlight-python"><div class="highlight"><pre>[1 4 2 8 5 7]     0 =      -&gt;   1
+[1 4 2 8 5 7]     5 =      -&gt;   7
+[1 4 2 8 5 7]     6 =      -&gt;   1
+[1 4 2 8 5 7]    -2 =      -&gt;   5
+[1 4 2 8 5 7] -1000 =      -&gt;   2
+</pre></div>
+</div>
+<p>Setting a position in an array is done with <code class="docutils literal"><span class="pre">t</span></code>, with the index followed by the element (<a class="reference external" href="http://cjam.aditsu.net/#code=%5B1%204%202%208%205%207%5D%200%20-3%20t%20p">permalink</a>):</p>
+<div class="highlight-python"><div class="highlight"><pre>[1 4 2 8 5 7]  0 -3 t      -&gt;   [-3 4 2 8 5 7]
+</pre></div>
+</div>
+<p>Similarly to <code class="docutils literal"><span class="pre">=</span></code>, <code class="docutils literal"><span class="pre">t</span></code> also wraps around for out of bounds indices.</p>
+</div>
+<div class="section" id="slices">
+<h2>Slices<a class="headerlink" href="#slices" title="Permalink to this headline">¶</a></h2>
+<p>Array slicing is done with <code class="docutils literal"><span class="pre">&gt;</span></code> and <code class="docutils literal"><span class="pre">&lt;</span></code> (<a class="reference external" href="http://cjam.aditsu.net/#code=%5B1%204%202%208%205%207%5D%202%20%3C%20p%0A%5B1%204%202%208%205%207%5D%202%20%3E%20p%0A%5B1%204%202%208%205%207%5D%20-3%20%3C%20p%0A%5B1%204%202%208%205%207%5D%20-3%20%3E%20p">permalink</a>):</p>
+<div class="highlight-python"><div class="highlight"><pre>[1 4 2 8 5 7]  2 &lt;     -&gt;    [1 4]
+[1 4 2 8 5 7]  2 &gt;     -&gt;    [2 8 5 7]
+[1 4 2 8 5 7] -3 &lt;     -&gt;    [1 4 2]
+[1 4 2 8 5 7] -3 &gt;     -&gt;    [8 5 7]
+</pre></div>
+</div>
+<p>For example, one way of getting the lowercase letters is <code class="docutils literal"><span class="pre">'{,97&gt;</span></code> (<a class="reference external" href="http://cjam.aditsu.net/#code='%7B%2C97%3E">permalink</a>).</p>
+<p>Getting every nth element can be done with <code class="docutils literal"><span class="pre">%</span></code> (<a class="reference external" href="http://cjam.aditsu.net/#code=%5B1%204%202%208%205%207%5D%20%202%20%25%20p%0A%5B1%204%202%208%205%207%5D%20%203%20%25%20p%0A%5B1%204%202%208%205%207%5D%20%20W%20%25%20p%20%20%20%20e%23%20%20W%20is%20-1%0A%5B1%204%202%208%205%207%5D%20-2%20%25%20p">permalink</a>):</p>
+<div class="highlight-python"><div class="highlight"><pre>[1 4 2 8 5 7]  2 %    -&gt;    [1 2 5]
+[1 4 2 8 5 7]  3 %    -&gt;    [1 8]
+[1 4 2 8 5 7]  W %    -&gt;    [7 5 8 2 4 1]
+[1 4 2 8 5 7] -2 %    -&gt;    [7 8 4]
+</pre></div>
+</div>
+<p>For negative numbers the step is backwards, so <code class="docutils literal"><span class="pre">W%</span></code> is a common idiom for reversing an array, as <code class="docutils literal"><span class="pre">W</span></code> is preinitialised to -1.</p>
+</div>
+<div class="section" id="uncons">
+<h2>Uncons<a class="headerlink" href="#uncons" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes you want to just pop from an array, removing the first or last element while leaving the rest of the array intact. This can be done with <code class="docutils literal"><span class="pre">(</span></code> and <code class="docutils literal"><span class="pre">)</span></code> respectively (<a class="reference external" href="http://cjam.aditsu.net/#code=%5B1%204%202%208%205%207%5D%20(%20ed%20%3B%3B%0A%5B1%204%202%208%205%207%5D%20)%20ed%20%3B%3B">permalink</a>):</p>
+<div class="highlight-python"><div class="highlight"><pre>[1 4 2 8 5 7]  (    -&gt;    [4 2 8 5 7] 1
+[1 4 2 8 5 7]  )    -&gt;    [1 4 2 8 5] 7
+</pre></div>
+</div>
+</div>
+<div class="section" id="sort">
+<h2>Sort<a class="headerlink" href="#sort" title="Permalink to this headline">¶</a></h2>
+<p>Sorting can be done with <code class="docutils literal"><span class="pre">$</span></code> (<a class="reference external" href="http://cjam.aditsu.net/#code=%5B1%204%202%208%205%207%5D%20%24%20p">permalink</a>):</p>
+<div class="highlight-python"><div class="highlight"><pre>[1 4 2 8 5 7]  $    -&gt;    [1 2 4 5 7 8]
+</pre></div>
+</div>
+<p>If two elements aren&#8217;t comparable, an error is sensibly thrown.</p>
+<p><code class="docutils literal"><span class="pre">$</span></code> can optionally take an additional block argument, which determines what key to sort by. For example, <code class="docutils literal"><span class="pre">$</span></code> on its own sorts strings by ASCII values, while <code class="docutils literal"><span class="pre">{el}</span> <span class="pre">$</span></code> sorts strings by their lowercase counterparts, giving a case-insensitive search. Compare (<a class="reference external" href="http://cjam.aditsu.net/#code=%5B%22Bee%22%20%22candy%22%20%22Cake%22%20%22apple%22%5D%20%20%20%20%20%20%24%20p%0A%5B%22Bee%22%20%22candy%22%20%22Cake%22%20%22apple%22%5D%20%7Bel%7D%20%24%20p">permalink</a>):</p>
+<div class="highlight-python"><div class="highlight"><pre>[&quot;Bee&quot; &quot;candy&quot; &quot;Cake&quot; &quot;apple&quot;]      $   -&gt;   [&quot;Bee&quot; &quot;Cake&quot; &quot;apple&quot; &quot;candy&quot;]
+[&quot;Bee&quot; &quot;candy&quot; &quot;Cake&quot; &quot;apple&quot;] {el} $   -&gt;   [&quot;apple&quot; &quot;Bee&quot; &quot;Cake&quot; &quot;candy&quot;]
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">el</span></code> and <code class="docutils literal"><span class="pre">eu</span></code> convert strings to lowercase and uppercase respectively.</p>
+<p>Another example is <code class="docutils literal"><span class="pre">{3-z}</span> <span class="pre">$</span></code>, which sorts an array of numbers by the key <code class="docutils literal"><span class="pre">|n-3|</span></code>, with <code class="docutils literal"><span class="pre">z</span></code> being the absolute value operator for numbers (<a class="reference external" href="http://cjam.aditsu.net/#code=%5B-2%204%202%206%209%201%203%20-1%5D%20%7B3-z%7D%20%24%20p">permalink</a>):</p>
+<div class="highlight-python"><div class="highlight"><pre>[-2 4 2 6 9 1 3 -1] {3-z} $ p    -&gt;    [3 4 2 1 6 -1 -2 9]
+</pre></div>
+</div>
+<p>Note how 4 comes before 2 in the resulting array, even though they are both the same distance from 3. CJam uses Java&#8217;s <code class="docutils literal"><span class="pre">Collections.sort</span></code>, which is stable and <a class="reference external" href="http://docs.oracle.com/javase/7/docs/api/java/util/Collections.html#sort(java.util.List,%20java.util.Comparator)">does not reorder equal elements</a>.</p>
+</div>
+<div class="section" id="find-index">
+<h2>Find index<a class="headerlink" href="#find-index" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">#</span></code> finds the index of an element in an array, returning <code class="docutils literal"><span class="pre">-1</span></code> if the element is not found (<a class="reference external" href="http://cjam.aditsu.net/#code=%5B1%204%202%208%205%207%5D%201%20%23%20p%0A%5B1%204%202%208%205%207%5D%205%20%23%20p%0A%5B1%204%202%208%205%207%5D%209%20%23%20p">permalink</a>):</p>
+<div class="highlight-python"><div class="highlight"><pre>[1 4 2 8 5 7] 1 #    -&gt;    0
+[1 4 2 8 5 7] 5 #    -&gt;    4
+[1 4 2 8 5 7] 9 #    -&gt;    -1
+</pre></div>
+</div>
+<p>Like <code class="docutils literal"><span class="pre">$</span></code>, <code class="docutils literal"><span class="pre">#</span></code> can also take a block, returning the index of the first element which satisfies the given condition. For example, <code class="docutils literal"><span class="pre">{0&gt;}</span> <span class="pre">#</span></code> gives the index of the first positive element (<a class="reference external" href="http://cjam.aditsu.net/#code=%5B-3%20-2%200%204%209%20-3%200%202%5D%20%7B0%3E%7D%20%23">permalink</a>):</p>
+<div class="highlight-python"><div class="highlight"><pre>[-3 -2 0 4 9 -3 0 2] {0&gt;} #    -&gt;    3
+</pre></div>
+</div>
+</div>
+<div class="section" id="split">
+<h2>Split<a class="headerlink" href="#split" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">/</span></code> splits an array based on another. The most common use for this is to split a string, e.g. <code class="docutils literal"><span class="pre">S/</span></code> splits by spaces and <code class="docutils literal"><span class="pre">N/</span></code> splits by newlines (<a class="reference external" href="http://cjam.aditsu.net/#code=%22one%20fish%20two%20fish%22%20%20%20%20%20%20%20S%20%2F%20p%20%20%20e%23%20S%20is%20space%2C%20or%20%22%20%22%0A%22one%20fish%20two%20fish%22%20%20%22fish%22%20%2F%20p%0A%22one%20fish%20two%20fish%22%20%22uh-oh%22%20%2F%20p">permalink</a>):</p>
+<div class="highlight-python"><div class="highlight"><pre>&quot;one fish two fish&quot;       S /    -&gt;    [&quot;one&quot; &quot;fish&quot; &quot;two&quot; &quot;fish&quot;]
+&quot;one fish two fish&quot;  &quot;fish&quot; /    -&gt;    [&quot;one &quot; &quot; two &quot; &quot;&quot;]
+&quot;one fish two fish&quot; &quot;uh-oh&quot; /    -&gt;    [&quot;one fish two fish&quot;]
+</pre></div>
+</div>
+<p>But <code class="docutils literal"><span class="pre">/</span></code> actually works for any two arrays (<a class="reference external" href="http://cjam.aditsu.net/#code=%5B1%204%20%22cake%22%203%20%22blue%22%204%20%22cake%22%202%5D%20%5B4%20%22cake%22%5D%20%2F%20p">permalink</a>):</p>
+<div class="highlight-python"><div class="highlight"><pre>[1 4 &quot;cake&quot; 3 &quot;blue&quot; 4 &quot;cake&quot; 2] [4 &quot;cake&quot;] /    -&gt;    [[1] [3 &quot;blue&quot;] [2]]
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">%</span></code> is also for splitting, but removes empty chunks in the resulting array (<a class="reference external" href="http://cjam.aditsu.net/#code=%22one%20fish%20two%20fish%22%20%22fish%22%20%25%20p">permalink</a>):</p>
+<div class="highlight-python"><div class="highlight"><pre>&quot;one fish two fish&quot; &quot;fish&quot; % p    -&gt;    [&quot;one &quot; &quot; two &quot;]
+</pre></div>
+</div>
+</div>
+<div class="section" id="join">
+<h2>Join<a class="headerlink" href="#join" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">*</span></code> takes two arrays – the second array is riffled between the elements of the first. For example, <code class="docutils literal"><span class="pre">&quot;,</span> <span class="pre">&quot;</span> <span class="pre">*</span></code> joins an array of values with commas (<a class="reference external" href="http://cjam.aditsu.net/#code=%5B1%204%202%208%205%207%5D%20%22%2C%20%22%20*">permalink</a>):</p>
+<div class="highlight-python"><div class="highlight"><pre>[1 4 2 8 5 7] &quot;, &quot; *    -&gt;    1, 4, 2, 8, 5, 7
+</pre></div>
+</div>
+<p>The actual resulting array looks like this:</p>
+<div class="highlight-python"><div class="highlight"><pre>[1 &#39;, &#39;  4 &#39;, &#39;  2 &#39;, &#39;  8 &#39;, &#39;  5 &#39;, &#39;  7]
+</pre></div>
+</div>
+<p>We can join with any array, e.g. (<a class="reference external" href="http://cjam.aditsu.net/#code=%5B1%207%202%209%5D%20%5B%22a%22%200%5D%20*%20p">permalink</a>):</p>
+<div class="highlight-python"><div class="highlight"><pre>[1 7 2 9] [&quot;a&quot; 0] *    -&gt;    [1 &quot;a&quot; 0 7 &quot;a&quot; 0 2 &quot;a&quot; 0 9]
+</pre></div>
+</div>
+<p>Joining can be combined with splitting to give an idiom for search-and-replace (<a class="reference external" href="http://cjam.aditsu.net/#code=%2212313132131231%22%20%2213%22%2F%20%22..%22*%20p%20%20e%23%20Replace%20%2213%22%20with%20%22..%22%0A%22a%20%20%20b%20c%20%20%20%20d%20%20%22%20S%25%20S*%20p%20%20%20%20%20%20%20%20e%23%20Collapse%20runs%20of%20spaces">permalink</a>):</p>
+<div class="highlight-python"><div class="highlight"><pre>Replace &quot;13&quot; with &quot;..&quot;:
+&quot;12313132131231&quot; &quot;13&quot;/ &quot;..&quot;*    -&gt;    &quot;123....2..1231&quot;
+
+Collapse runs of spaces:
+&quot;a   b c    d  &quot; S% S* p        -&gt;    &quot;a b c d&quot;
+</pre></div>
+</div>
+<p>Note</p>
+</div>
+<div class="section" id="set-operations">
+<h2>Set operations<a class="headerlink" href="#set-operations" title="Permalink to this headline">¶</a></h2>
+<p>CJam arrays can actually be used as sets. Like sorting, CJam set operations are stable, keeping elements in order.</p>
+<p>The set operations are:</p>
+<div class="highlight-python"><div class="highlight"><pre>&amp;    Set AND, or intersection
+|    Set OR, or union
+^    Set XOR, or symmetric difference
+-    Set minus, or relative complement
+</pre></div>
+</div>
+<p>For instance (<a class="reference external" href="http://cjam.aditsu.net/#code=%5B1%204%202%208%205%207%5D%20%5B1%207%202%209%5D%20%26%20p%0A%5B1%204%202%208%205%207%5D%20%5B1%207%202%209%5D%20%7C%20p%0A%5B1%204%202%208%205%207%5D%20%5B1%207%202%209%5D%20%5E%20p%0A%5B1%204%202%208%205%207%5D%20%5B1%207%202%209%5D%20-%20p">permalink</a>):</p>
+<div class="highlight-python"><div class="highlight"><pre>[1 4 2 8 5 7] [1 7 2 9] &amp;    -&gt;    [1 2 7]
+[1 4 2 8 5 7] [1 7 2 9] |    -&gt;    [1 4 2 8 5 7 9]
+[1 4 2 8 5 7] [1 7 2 9] ^    -&gt;    [4 8 5 9]
+[1 4 2 8 5 7] [1 7 2 9] -    -&gt;    [4 8 5]
+</pre></div>
+</div>
+<p>A common idiom for removing duplicates from an array is to simply do <code class="docutils literal"><span class="pre">_&amp;</span></code>, intersecting the array with itself.</p>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="0.6.5.html" class="btn btn-neutral float-right" title="New Operators in CJam 0.6.5" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="intro.html" class="btn btn-neutral" title="Tutorial #1: Introduction to CJam" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, ???.
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

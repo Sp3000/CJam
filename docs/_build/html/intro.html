@@ -31,7 +31,8 @@
 
   
     <link rel="top" title="CJam Tutorial and Docs 1.0 documentation" href="index.html"/>
-        <link rel="prev" title="New Operators in CJam 0.6.5" href="0.6.5.html"/> 
+        <link rel="next" title="Tutorial #2: Basic array manipulations" href="arrays1.html"/>
+        <link rel="prev" title="CJam Tutorial and Docs" href="index.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -71,6 +72,34 @@
           
           
               <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">Tutorial #1: Introduction to CJam</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hello-world">Hello, World!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#numerical-calculations-in-cjam">Numerical calculations in CJam</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#blocks-and-variables">Blocks and variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#arrays-and-characters">Arrays and characters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#converting-types">Converting types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#input-and-output">Input and output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#stack-manipulation">Stack manipulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-program-distance-calculator">Example program: Distance calculator</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="arrays1.html">Tutorial #2: Basic array manipulations *</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="arrays1.html#wrapping-and-unwrapping">Wrapping and unwrapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays1.html#concatenation">Concatenation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays1.html#ranges">Ranges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays1.html#getting-and-setting">Getting and setting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays1.html#slices">Slices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays1.html#uncons">Uncons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays1.html#sort">Sort</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays1.html#find-index">Find index</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays1.html#split">Split</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays1.html#join">Join</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays1.html#set-operations">Set operations</a></li>
+</ul>
+</li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="0.6.5.html">New Operators in CJam 0.6.5</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="0.6.5.html#vector-operators">Vector operators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="0.6.5.html#w-while-loops"><code class="docutils literal"><span class="pre">w</span></code> &#8211; while loops</a></li>
@@ -92,16 +121,17 @@
 <li class="toctree-l2"><a class="reference internal" href="0.6.5.html#and-for-blocks-if-with-only-then-or-only-else"><code class="docutils literal"><span class="pre">&amp;</span></code> and <code class="docutils literal"><span class="pre">|</span></code> for blocks &#8211; &#8220;if&#8221; with only &#8220;then&#8221; or only &#8220;else&#8221;</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Tutorial #1: Introduction to CJam</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting started</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#hello-world">Hello, World!</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#numerical-calculations-in-cjam">Numerical calculations in CJam</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#blocks-and-variables">Blocks and variables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#arrays-and-characters">Arrays and characters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#converting-types">Converting types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#input-and-output">Input and output</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#stack-manipulation">Stack manipulation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#example-program-distance-calculator">Example program: Distance calculator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="operators.html">Operator Summary *</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="operators.html#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="operator-details.html">Operator Details *</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="operator-details.html#basic-arithmetic">Basic arithmetic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="operator-details.html#x-num-y-num-power-exponentiation"><code class="docutils literal"><span class="pre">x:Num</span> <span class="pre">y:Num</span> <span class="pre">#</span></code> &#8211; power/exponentiation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="operator-details.html#logical-operations">Logical operations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="operator-details.html#any-boolean-not"><code class="docutils literal"><span class="pre">Any</span> <span class="pre">!</span></code> &#8211; boolean &#8220;not&#8221;</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -228,6 +258,7 @@
 <div class="highlight-python"><div class="highlight"><pre><span class="n">HOUSEBOATHOUSEBOATBOATBOATHOUSE</span>
 </pre></div>
 </div>
+<p>Each of CJam&#8217;s variables is preinitialised with a value, the full list of which can be found <a class="reference external" href="http://sourceforge.net/p/cjam/wiki/Variables/">here</a>.</p>
 </div>
 <div class="section" id="arrays-and-characters">
 <h2>Arrays and characters<a class="headerlink" href="#arrays-and-characters" title="Permalink to this headline">¶</a></h2>
@@ -299,7 +330,7 @@ _             Duplicate                    [1 2 3 4 4]
 </pre></div>
 </div>
 <p>Note that <code class="docutils literal"><span class="pre">$</span></code> starts counting from <code class="docutils literal"><span class="pre">0</span></code>, so <code class="docutils literal"><span class="pre">0$</span></code> is the same as <code class="docutils literal"><span class="pre">_</span></code>. It also allows for negative numbers, e.g. <code class="docutils literal"><span class="pre">-1$</span></code> copies the bottom of the stack.</p>
-<p>Also, the easy way to remember which way <code class="docutils literal"><span class="pre">&#64;</span></code> rotates is that since <code class="docutils literal"><span class="pre">\</span></code> moves the second element from the top to the top, it&#8217;s more useful for <code class="docutils literal"><span class="pre">&#64;</span></code> to move the third element from the top to the top.</p>
+<p>The easy way to remember which way <code class="docutils literal"><span class="pre">&#64;</span></code> rotates is that since <code class="docutils literal"><span class="pre">\</span></code> moves the second element from the top to the top, it&#8217;s more useful for <code class="docutils literal"><span class="pre">&#64;</span></code> to move the third element from the top to the top.</p>
 </div>
 <div class="section" id="example-program-distance-calculator">
 <h2>Example program: Distance calculator<a class="headerlink" href="#example-program-distance-calculator" title="Permalink to this headline">¶</a></h2>
@@ -316,7 +347,7 @@ _             Duplicate                    [1 2 3 4 4]
 <div class="highlight-python"><div class="highlight"><pre>[x1 x2 (y2-y1)^2]
 </pre></div>
 </div>
-<p>As a side comment, although it appears it should, <code class="docutils literal"><span class="pre">2#</span></code> (power of 2) can&#8217;t be used in place of <code class="docutils literal"><span class="pre">_*</span></code> here due to the preceding <code class="docutils literal"><span class="pre">-</span></code>, which together is parsed as <code class="docutils literal"><span class="pre">-2</span> <span class="pre">#</span></code> (power of -2). Adding a space in between like <code class="docutils literal"><span class="pre">-</span> <span class="pre">2#</span></code> would work, but it is better to use the <code class="docutils literal"><span class="pre">m</span></code> operator, which is designed to act as subtraction when followed by a numeric literal (i.e. <code class="docutils literal"><span class="pre">m2#</span></code> can be used instead of <code class="docutils literal"><span class="pre">-_*</span></code>).</p>
+<p>As a side comment, although it appears it could, <code class="docutils literal"><span class="pre">2#</span></code> (power of 2) can&#8217;t be used in place of <code class="docutils literal"><span class="pre">_*</span></code> here due to the preceding <code class="docutils literal"><span class="pre">-</span></code>, which together is parsed as <code class="docutils literal"><span class="pre">-2</span> <span class="pre">#</span></code> (power of -2). Adding a space in between like <code class="docutils literal"><span class="pre">-</span> <span class="pre">2#</span></code> would work, but it is better to use the <code class="docutils literal"><span class="pre">m</span></code> operator, which is designed to act as subtraction when followed by a numeric literal (i.e. <code class="docutils literal"><span class="pre">m2#</span></code> can be used instead of <code class="docutils literal"><span class="pre">-_*</span></code>).</p>
 <p>Moving on, we can move the top of the stack to the bottom by rotating twice with <code class="docutils literal"><span class="pre">&#64;&#64;</span></code>, giving:</p>
 <div class="highlight-python"><div class="highlight"><pre>[(y2-y1)^2 x1 x2]
 </pre></div>
@@ -346,8 +377,10 @@ _             Duplicate                    [1 2 3 4 4]
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="arrays1.html" class="btn btn-neutral float-right" title="Tutorial #2: Basic array manipulations" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-        <a href="0.6.5.html" class="btn btn-neutral" title="New Operators in CJam 0.6.5" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+        <a href="index.html" class="btn btn-neutral" title="CJam Tutorial and Docs" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
