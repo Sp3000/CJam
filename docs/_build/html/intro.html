@@ -31,7 +31,7 @@
 
   
     <link rel="top" title="CJam Tutorial and Docs 1.0 documentation" href="index.html"/>
-        <link rel="next" title="New Operators in CJam 0.6.5" href="0.6.5.html"/>
+        <link rel="next" title="Tutorial #2: Basic array manipulations" href="arrays1.html"/>
         <link rel="prev" title="CJam Tutorial and Docs" href="index.html"/> 
 
   
@@ -82,6 +82,22 @@
 <li class="toctree-l2"><a class="reference internal" href="#input-and-output">Input and output</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#stack-manipulation">Stack manipulation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#example-program-distance-calculator">Example program: Distance calculator</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="arrays1.html">Tutorial #2: Basic array manipulations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="arrays1.html#wrapping-and-unwrapping">Wrapping and unwrapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays1.html#concatenation">Concatenation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays1.html#repetition">Repetition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays1.html#array-length-and-ranges">Array length and ranges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays1.html#getting-and-setting">Getting and setting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays1.html#slices">Slices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays1.html#uncons">Uncons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays1.html#sort">Sort</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays1.html#find-index">Find index</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays1.html#split">Split</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays1.html#join">Join</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays1.html#set-operations">Set operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays1.html#example-program-name-sorter">Example program: Name sorter</a></li>
 </ul>
 </li>
 </ul>
@@ -281,11 +297,15 @@ s       Convert to string
 ~       Evaluate string/block
 </pre></div>
 </div>
-<p>Backtick <code class="docutils literal"><span class="pre">`</span></code> and <code class="docutils literal"><span class="pre">s</span></code> differ primarily in how arrays are turned into strings. For example, <code class="docutils literal"><span class="pre">[1</span> <span class="pre">2</span> <span class="pre">3]</span> <span class="pre">`</span></code> results in the string <code class="docutils literal"><span class="pre">&quot;[1</span> <span class="pre">2</span> <span class="pre">3]&quot;</span></code> while <code class="docutils literal"><span class="pre">[1</span> <span class="pre">2</span> <span class="pre">3]</span> <span class="pre">s</span></code> results in <code class="docutils literal"><span class="pre">&quot;123&quot;</span></code>.</p>
+<p>Revisiting the <code class="docutils literal"><span class="pre">5</span> <span class="pre">2</span> <span class="pre">/</span></code> example from earlier, if we already had 5 and 2 on the stack and wanted float division, this means that we can perform <code class="docutils literal"><span class="pre">d</span></code> to convert the 2 to a double before dividing, i.e. (<a class="reference external" href="http://cjam.aditsu.net/#code=5%202%20d%20%2F">permalink</a>)</p>
+<div class="highlight-python"><div class="highlight"><pre>5 2 d /    -&gt;    2.5
+</pre></div>
+</div>
+<p>Anothere note is that backtick <code class="docutils literal"><span class="pre">`</span></code> and <code class="docutils literal"><span class="pre">s</span></code> differ primarily in how arrays are turned into strings. For example, <code class="docutils literal"><span class="pre">[1</span> <span class="pre">2</span> <span class="pre">3]</span> <span class="pre">`</span></code> results in the string <code class="docutils literal"><span class="pre">&quot;[1</span> <span class="pre">2</span> <span class="pre">3]&quot;</span></code> while <code class="docutils literal"><span class="pre">[1</span> <span class="pre">2</span> <span class="pre">3]</span> <span class="pre">s</span></code> results in <code class="docutils literal"><span class="pre">&quot;123&quot;</span></code>.</p>
 </div>
 <div class="section" id="input-and-output">
 <h2>Input and output<a class="headerlink" href="#input-and-output" title="Permalink to this headline">¶</a></h2>
-<p>Here are the main ways of getting input in CJam:</p>
+<p>In CJam, there are three operators for getting input via STDIN:</p>
 <div class="highlight-python"><div class="highlight"><pre>l       Read line
 q       Read all input
 r       Read token (whitespace-separated)
@@ -296,6 +316,7 @@ r       Read token (whitespace-separated)
 </pre></div>
 </div>
 <p>is a simple program which doubles an input integer (<a class="reference external" href="http://cjam.aditsu.net/#code=l%20i%202%20*&amp;input=6">permalink</a>). <code class="docutils literal"><span class="pre">ri2*</span></code> or <code class="docutils literal"><span class="pre">qi2*</span></code> would work just as well here (whitespace is typically unnecessary except between numeric literals).</p>
+<p>There is also a fourth operator, <code class="docutils literal"><span class="pre">ea</span></code>, which pushes arguments from command-line onto the stack as an array. This feature is only available in the offline interpreter.</p>
 <p>As for output, aside from the automatic printing upon program termination, CJam also has two specific operators for output:</p>
 <div class="highlight-python"><div class="highlight"><pre>o       Print value
 p       Print string representation and newline
@@ -363,7 +384,7 @@ _             Duplicate                    [1 2 3 4 4]
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="0.6.5.html" class="btn btn-neutral float-right" title="New Operators in CJam 0.6.5" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="arrays1.html" class="btn btn-neutral float-right" title="Tutorial #2: Basic array manipulations" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="index.html" class="btn btn-neutral" title="CJam Tutorial and Docs" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
