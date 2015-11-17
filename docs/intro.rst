@@ -138,12 +138,14 @@ Now that we've seen examples of each CJam data type, here is a summary of operat
     i       Convert to integer
     s       Convert to string
     ~       Evaluate string/block
+    
+For example, ``33 c`` converts 33 to its respective ASCII character, ``'!``, and ``'! i`` gives us back 33. Some combinations don't make sense and give an error, such as converting a string to an integer, although counterintuitively it's possible to convert a non-empty string to a character, giving the first char (e.g. ``"abcde" c`` gives ``'a``).
 
-Revisiting the ``5 2 /`` example from earlier, if we already had 5 and 2 on the stack and wanted float division, this means that we can perform ``d`` to convert the 2 to a double before dividing, i.e. (`permalink <http://cjam.aditsu.net/#code=5%202%20d%20%2F>`__) ::
+Revisiting the ``5 2 /`` example from earlier, if we already had 5 and 2 on the stack and wanted float division, this means that we can perform ``d`` to convert the 2 to a double before dividing (`permalink <http://cjam.aditsu.net/#code=5%202%20d%20%2F>`__) ::
 
     5 2 d /    ->    2.5
 
-Anothere note is that backtick ````` and ``s`` differ primarily in how arrays are turned into strings. For example, ``[1 2 3] ``` results in the string ``"[1 2 3]"`` while ``[1 2 3] s`` results in ``"123"``.
+Another note is that backtick ````` and ``s`` differ primarily in how arrays are turned into strings. For example, ``[1 2 3] ``` results in the string ``"[1 2 3]"`` while ``[1 2 3] s`` results in ``"123"``.
 
 Input and output
 ----------------
