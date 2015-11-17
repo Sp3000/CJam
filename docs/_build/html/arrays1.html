@@ -423,7 +423,7 @@ John Smith
 <div class="highlight-python"><div class="highlight"><pre>qN/{S/W%}$N*
 </pre></div>
 </div>
-<p>Now what if we have middle names, like <code class="docutils literal"><span class="pre">John</span> <span class="pre">B.</span> <span class="pre">Doe</span></code>? Our current program would still work, but our sorting key would prioritise middle names before first names. If we want to prioritise firt names <em>before</em> middle names, then we would need to change the key a little.</p>
+<p>Now what if we have middle names, like <code class="docutils literal"><span class="pre">John</span> <span class="pre">B.</span> <span class="pre">Doe</span></code>? Our current program would still work, but our sorting key would prioritise middle names before first names. If we want to prioritise first names <em>before</em> middle names, then we would need to change the key a little.</p>
 <p>Splitting <code class="docutils literal"><span class="pre">&quot;John</span> <span class="pre">B.</span> <span class="pre">Doe&quot;</span></code> by spaces gives <code class="docutils literal"><span class="pre">[&quot;John&quot;</span> <span class="pre">&quot;B.&quot;</span> <span class="pre">&quot;Doe&quot;]</span></code>, but the desired priority order is <code class="docutils literal"><span class="pre">[&quot;Doe&quot;</span> <span class="pre">&quot;John&quot;</span> <span class="pre">&quot;B.&quot;]</span></code>. We simply need to move the last name to the front, and to do so we start by popping the last name off:</p>
 <div class="highlight-python"><div class="highlight"><pre>[&quot;John&quot; &quot;B.&quot; &quot;Doe&quot;] )      -&gt;    [&quot;John&quot; &quot;B.&quot;] &quot;Doe&quot;
 </pre></div>

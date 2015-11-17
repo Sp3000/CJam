@@ -266,7 +266,7 @@ And the final program is (`permalink <http://cjam.aditsu.net/#code=qN%2F%7BS%2FW
 
     qN/{S/W%}$N*
 
-Now what if we have middle names, like ``John B. Doe``? Our current program would still work, but our sorting key would prioritise middle names before first names. If we want to prioritise firt names *before* middle names, then we would need to change the key a little.
+Now what if we have middle names, like ``John B. Doe``? Our current program would still work, but our sorting key would prioritise middle names before first names. If we want to prioritise first names *before* middle names, then we would need to change the key a little.
 
 Splitting ``"John B. Doe"`` by spaces gives ``["John" "B." "Doe"]``, but the desired priority order is ``["Doe" "John" "B."]``. We simply need to move the last name to the front, and to do so we start by popping the last name off: ::
 
