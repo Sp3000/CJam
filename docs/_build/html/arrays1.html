@@ -302,7 +302,7 @@
 [1 0 1 1 0 0 1 0 1 1 0] [0 0 0] #    -&gt;   -1
 </pre></div>
 </div>
-<p>It is important to remember that strings are arrays too. For instance, the second example below won&#8217;t work because <code class="docutils literal"><span class="pre">[&quot;fish&quot;]</span></code> is not a subarray of <code class="docutils literal"><span class="pre">&quot;one</span> <span class="pre">fish</span> <span class="pre">to</span> <span class="pre">fish&quot;</span> <span class="pre">=</span> <span class="pre">['o</span> <span class="pre">'n</span> <span class="pre">'e</span> <span class="pre">...]</span></code> (<a class="reference external" href="http://cjam.aditsu.net/#code=%22one%20fish%20two%20fish%22%20%22fish%22%20%20%23%20p%0A%22one%20fish%20two%20fish%22%20%22fish%22a%20%23%20p%0A%0A%5B%22one%22%20%22fish%22%20%22two%22%20%22fish%22%5D%20%22fish%22%20%20%23%20p%0A%5B%22one%22%20%22fish%22%20%22two%22%20%22fish%22%5D%20%22fish%22a%20%23%20p">permalink</a>).</p>
+<p>It is important to remember that strings are arrays too. For instance, the second example below won&#8217;t work because <code class="docutils literal"><span class="pre">[&quot;fish&quot;]</span></code> is not a subarray of <code class="docutils literal"><span class="pre">&quot;one</span> <span class="pre">fish</span> <span class="pre">two</span> <span class="pre">fish&quot;</span> <span class="pre">=</span> <span class="pre">['o</span> <span class="pre">'n</span> <span class="pre">'e</span> <span class="pre">...]</span></code> (<a class="reference external" href="http://cjam.aditsu.net/#code=%22one%20fish%20two%20fish%22%20%22fish%22%20%20%23%20p%0A%22one%20fish%20two%20fish%22%20%22fish%22a%20%23%20p%0A%0A%5B%22one%22%20%22fish%22%20%22two%22%20%22fish%22%5D%20%22fish%22%20%20%23%20p%0A%5B%22one%22%20%22fish%22%20%22two%22%20%22fish%22%5D%20%22fish%22a%20%23%20p">permalink</a>).</p>
 <div class="highlight-python"><div class="highlight"><pre>&quot;one fish two fish&quot; &quot;fish&quot;  #    -&gt;    4
 &quot;one fish two fish&quot; &quot;fish&quot;a #    -&gt;    -1
 
@@ -337,6 +337,12 @@
 </div>
 <p>Similarly, <code class="docutils literal"><span class="pre">%</span></code> can also be used for splitting, but removes empty chunks in the resulting array (<a class="reference external" href="http://cjam.aditsu.net/#code=%22one%20fish%20two%20fish%22%20%22fish%22%20%25%20p">permalink</a>):</p>
 <div class="highlight-python"><div class="highlight"><pre>&quot;one fish two fish&quot; &quot;fish&quot; % p    -&gt;    [&quot;one &quot; &quot; two &quot;]
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">/</span></code> also works if one element is an array and the other is a number. In this situation the array is split into chunks of size equal to the number, except possibly the last chunk if there aren&#8217;t enough elements (<a class="reference external" href="http://cjam.aditsu.net/#code=%5B1%204%202%208%205%207%5D%202%2F%20p%0A%5B1%204%202%208%205%207%5D%203%2F%20p%0A%5B1%204%202%208%205%207%5D%204%2F%20p">permalink</a>):</p>
+<div class="highlight-python"><div class="highlight"><pre>[1 4 2 8 5 7] 2/    -&gt;    [[1 4] [2 8] [5 7]]
+[1 4 2 8 5 7] 3/    -&gt;    [[1 4 2] [8 5 7]]
+[1 4 2 8 5 7] 4/    -&gt;    [[1 4 2 8] [5 7]]
 </pre></div>
 </div>
 </div>

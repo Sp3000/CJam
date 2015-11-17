@@ -139,7 +139,7 @@ If both top elements of the stack are arrays, ``#`` returns the first index of a
     [1 0 1 1 0 0 1 0 1 1 0] [0 1 0] #    ->    5
     [1 0 1 1 0 0 1 0 1 1 0] [0 0 0] #    ->   -1
 
-It is important to remember that strings are arrays too. For instance, the second example below won't work because ``["fish"]`` is not a subarray of ``"one fish to fish" = ['o 'n 'e ...]`` (`permalink <http://cjam.aditsu.net/#code=%22one%20fish%20two%20fish%22%20%22fish%22%20%20%23%20p%0A%22one%20fish%20two%20fish%22%20%22fish%22a%20%23%20p%0A%0A%5B%22one%22%20%22fish%22%20%22two%22%20%22fish%22%5D%20%22fish%22%20%20%23%20p%0A%5B%22one%22%20%22fish%22%20%22two%22%20%22fish%22%5D%20%22fish%22a%20%23%20p>`__). ::
+It is important to remember that strings are arrays too. For instance, the second example below won't work because ``["fish"]`` is not a subarray of ``"one fish two fish" = ['o 'n 'e ...]`` (`permalink <http://cjam.aditsu.net/#code=%22one%20fish%20two%20fish%22%20%22fish%22%20%20%23%20p%0A%22one%20fish%20two%20fish%22%20%22fish%22a%20%23%20p%0A%0A%5B%22one%22%20%22fish%22%20%22two%22%20%22fish%22%5D%20%22fish%22%20%20%23%20p%0A%5B%22one%22%20%22fish%22%20%22two%22%20%22fish%22%5D%20%22fish%22a%20%23%20p>`__). ::
 
     "one fish two fish" "fish"  #    ->    4
     "one fish two fish" "fish"a #    ->    -1
@@ -175,6 +175,12 @@ In fact, ``/`` works for any two general arrays (`permalink <http://cjam.aditsu.
 Similarly, ``%`` can also be used for splitting, but removes empty chunks in the resulting array (`permalink <http://cjam.aditsu.net/#code=%22one%20fish%20two%20fish%22%20%22fish%22%20%25%20p>`__): ::
 
     "one fish two fish" "fish" % p    ->    ["one " " two "]
+    
+``/`` also works if one element is an array and the other is a number. In this situation the array is split into chunks of size equal to the number, except possibly the last chunk if there aren't enough elements (`permalink <http://cjam.aditsu.net/#code=%5B1%204%202%208%205%207%5D%202%2F%20p%0A%5B1%204%202%208%205%207%5D%203%2F%20p%0A%5B1%204%202%208%205%207%5D%204%2F%20p>`__): ::
+
+    [1 4 2 8 5 7] 2/    ->    [[1 4] [2 8] [5 7]]
+    [1 4 2 8 5 7] 3/    ->    [[1 4 2] [8 5 7]]
+    [1 4 2 8 5 7] 4/    ->    [[1 4 2 8] [5 7]]
 
 Join
 ----

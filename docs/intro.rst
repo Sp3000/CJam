@@ -143,7 +143,7 @@ For example, ``33 c`` converts 33 to its respective ASCII character, ``'!``, and
 
     "abcde" c    ->    'a
 
-Revisiting the ``5 2 /`` example from earlier, if we already had 5 and 2 on the stack and wanted float division, this means that we can perform ``d`` to convert the 2 to a double before dividing (`permalink <http://cjam.aditsu.net/#code=5%202%20d%20%2F>`__) ::
+Revisiting the ``5 2 /`` example from earlier, if we already had 5 and 2 on the stack and wanted float division, this means that we can perform ``d`` to convert the 2 to a double before dividing (`permalink <http://cjam.aditsu.net/#code=5%202%20d%20%2F>`__): ::
 
     5 2 d /      ->    2.5
 
