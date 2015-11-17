@@ -138,13 +138,17 @@ Now that we've seen examples of each CJam data type, here is a summary of operat
     i       Convert to integer
     s       Convert to string
     ~       Evaluate string/block
-    
-Backtick ````` and ``s`` differ primarily in how arrays are turned into strings. For example, ``[1 2 3] ``` results in the string ``"[1 2 3]"`` while ``[1 2 3] s`` results in ``"123"``.
+
+Revisiting the ``5 2 /`` example from earlier, if we already had 5 and 2 on the stack and wanted float division, this means that we can perform ``d`` to convert the 2 to a double before dividing, i.e. (`permalink <http://cjam.aditsu.net/#code=5%202%20d%20%2F>`__) ::
+
+    5 2 d /    ->    2.5
+
+Anothere note is that backtick ````` and ``s`` differ primarily in how arrays are turned into strings. For example, ``[1 2 3] ``` results in the string ``"[1 2 3]"`` while ``[1 2 3] s`` results in ``"123"``.
 
 Input and output
 ----------------
 
-Here are the main ways of getting input in CJam: ::
+In CJam, there are three operators for getting input via STDIN: ::
 
     l       Read line
     q       Read all input
@@ -155,6 +159,8 @@ For instance, ::
     l i 2 *
 
 is a simple program which doubles an input integer (`permalink <http://cjam.aditsu.net/#code=l%20i%202%20*&input=6>`__). ``ri2*`` or ``qi2*`` would work just as well here (whitespace is typically unnecessary except between numeric literals).
+
+There is also a fourth operator, ``ea``, which pushes arguments from command-line onto the stack as an array. This feature is only available in the offline interpreter.
 
 As for output, aside from the automatic printing upon program termination, CJam also has two specific operators for output: ::
 
